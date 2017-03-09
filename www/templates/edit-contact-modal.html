@@ -1,0 +1,34 @@
+<ion-modal-view style="background-color:white!important">
+	<ion-header-bar class="bar bar-header bar-positive">
+		<h1 class="title">Actualizar Contacto</h1>
+		<button class="button button-clear button-primary" ng-click="modal.hide()"><i data-icon="h" class="icon"></i></button>
+	</ion-header-bar>
+	<ion-content class="padding">
+		<form name="contactForm">
+			<div class="list">
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Nombre</span>
+					<input ng-model="contact.name" type="text" ng-maxlength="70">
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Apellido</span>
+					<input ng-model="contact.lastname" type="text" ng-maxlength="70">
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Email</span>
+					<input ng-model="contact.email" type="email" ng-maxlength="70">
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Teléfono</span>
+					<input ng-model="contact.phone" type="text" ng-maxlength="45">
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">Organización</span>
+					<input ng-model="contact.company" type="text" ng-maxlength="70">
+				</label>
+				<button class="button button-full button-positive" ng-click="save(contact)">Actualizar</button>
+			</div>
+		</form>
+		
+	</ion-content>
+</ion-modal-view>

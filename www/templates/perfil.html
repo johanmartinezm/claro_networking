@@ -1,0 +1,37 @@
+<ion-view class="linear-gradient-gray-inverted" id="perfil" view-title="PERFIL">
+  <ion-content class="padding">
+    <div class="padding">
+      <div class="row">
+        <div class="col">
+          <div class="img-button">
+            <img class="img-responsive" ng-src="{{image}}">
+            <i ng-click="photo()" data-icon="n" class="icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="list list-inset list-transparent">
+        <div class="item item-input item-icon-right">
+          <input id="name" type="text" ng-model="item.name" ng-focus="true" placeholder="Ingrese su nombre">
+          <label for="name"><i data-icon="n" class="icon icon-editcircle"></i></label>
+        </div>
+        <div class="item item-input item-icon-right">
+          <input id="lastname" type="text" ng-model="item.lastname" placeholder="Ingrese su apellido">
+          <label for="lastname"><i data-icon="n" class="icon icon-editcircle"></i></label>
+        </div>
+        <div class="item item-input item-icon-right">
+          <input id="charge" type="text" ng-model="item.charge" placeholder="Ingrese su cargo">
+          <label for="charge"><i data-icon="n" class="icon icon-editcircle"></i></label>
+        </div>
+        <label class="item item-input item-icon-right">
+          <input type="text" value="{{item.email}}" readonly placeholder="Ingrese su e-mail registrado">
+        </label>
+        <label class="item item-input item-icon-right">
+          <input id="phone" type="text" ng-model="item.phone" placeholder="Ingrese su número de teléfono">
+          <label for="phone"><i data-icon="n" class="icon icon-editcircle"></i></label>
+        </label>
+        <button class="button button-full button-positive" ng-click="update()">Actualizar</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

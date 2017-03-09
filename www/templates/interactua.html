@@ -1,0 +1,56 @@
+<ion-view id="interactua" view-title="INTERACTÚA">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="entradaCtrl">
+      <p class="font-md">{{ ::interactTitle }}</p>
+    </div>
+
+    <div ng-repeat="item in items">
+      <ion-list class="list-no-border list-transparent list-medium">
+          <ion-item class="item-thumbnail-left item-avatar">
+            <img class="thumb-border" ng-src="{{item.image}}">
+            <h2>{{item.name}} {{item.lastname}}</h2>
+            <h4 class="font-title-light font-gray-medium">{{item.charge}}</h4>
+            <p>{{item.resume}}</p>
+          </ion-item>
+      </ion-list>
+    
+      <h4 ng-click="item.show = false" ng-show="item.answered" class="font-title-light font-red align-center button-accordion">
+        Gracias por responder
+      </h4>
+      <h4 ng-click="item.show = false" ng-show="item.show && !item.answered" class="font-title-light font-red align-center button-accordion">
+        Ocultar preguntas
+        <i data-icon="d" class="icon"></i>
+      </h4>
+      <h4 ng-click="item.show = true" ng-show="!item.show && !item.answered" class="font-title-light font-red align-center button-accordion">
+        Mostrar preguntas
+        <i data-icon="a" class="icon"></i>
+      </h4>
+      <div class="accordion-container padding" ng-show="item.show && !item.answered">
+        <div ng-if="item.questions.length == 0">
+          <p style="text-align:center;"><strong>No hay preguntas disponibles</strong></p>
+        </div>
+
+        <div ng-repeat="q in item.questions" ng-if="item.questions.length > 0">
+          <div class="margin-top">
+            <strong>{{ $index + 1}}. {{q.question}}</strong>
+          </div>
+          <div class="row" style="margin-bottom:1em;">
+            <form>
+              <div ng-repeat="option in q.options" style="margin-bottom:.5em;">
+                <input ng-click="select(item, option, q)" value="{{ ::option.id }}" style="display:inline-block;vertical-align:middle;" id="group-{{ ::item.id }}-{{ $index }}" name="group-{{ ::item.id }}" type="radio" ng-disabled="item.answered">
+                <label ng-click="select(item, option, q)" style="display:inline-block;vertical-align:middle;" for="group-{{ ::item.id }}-{{ $index }}">{{ ::option.name }}</label>
+              </div>  
+            </form>
+          </div>
+        </div>
+
+        <div class="row" ng-if="item.questions.length > 0">
+          <button  ng-if="!item.answered" class="button button-block {{ item.class }} upper" ng-click="rate(item)">Enviar respuesta</button>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

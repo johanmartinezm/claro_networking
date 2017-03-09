@@ -1,0 +1,44 @@
+<ion-view id="encuesta" view-title="ENCUESTA" cache-view="false">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div ng-if="items.length">
+      <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false" ng-init="init()">
+        <ion-slide class="padding" ng-repeat="item in items">
+          <p class="font-md">{{item.name}}</p>
+          
+          <ul class="list-inline margin-top-lg">
+            <li ng-repeat="c in item.companies">
+              <img class="img-responsive thumb-circle {{c.class}}" ng-src="{{c.image}}" ng-click="select(c, item)">
+            </li>
+          </ul>
+
+          <button class="button button-block {{item.class}} upper" ng-click="next(item)">Siguiente</button>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+    <div class="floating" ng-if="items.length">
+      <h4>{{page}}/{{limit}}</h4>
+    </div>
+  </ion-content>
+</ion-view>
+
+<script id="modal-encuesta.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container" ng-click="closeModal()">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content">
+          <div class="row">
+            <div class="col">
+              <div class="padding font-red align-center">
+                Gracias por tu tiempo, esta encuesta ya ha sido realizada.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>

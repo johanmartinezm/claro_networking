@@ -1,0 +1,48 @@
+<ion-view id="home" hide-back-button="true" view-title="CLARO NETWORKING">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <div class="home-button" ui-sref="event.agenda">
+          <img style="display:block;" class="img-responsive" src="img/home/agenda.jpg">
+          <div class="bottom">
+            <strong class="text">Agenda</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="home-button" ui-sref="event.logistica">
+          <img style="display:block;" class="img-responsive" src="img/home/logistica-itinerarios.jpg">
+          <div class="bottom">
+            <strong class="text small">Logística</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="home-button" ui-sref="event.casosdeexito">
+          <img style="display:block;" class="img-responsive" src="img/home/cocreacion.jpg">
+          <div class="bottom">
+            <strong class="text small">Casos de éxito</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ui-sref="event.notificaciones">
+      <i data-icon="z" class="icon"></i>
+      <span class="badge" ng-if="notifications.read">{{notifications.read}}</span>
+      Notificaciones
+    </a>
+    <a class="tab-item" ui-sref="event.actividad">
+      <i data-icon="K" class="icon"></i>
+      Actividad
+    </a>
+    <a class="tab-item" ui-sref="event.usuariostop">
+      <i data-icon="I" class="icon"></i>
+      Usuarios top
+    </a>
+  </div>
+</ion-view>

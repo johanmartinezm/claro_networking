@@ -1,0 +1,17 @@
+<ion-view id="entrada" view-title="ENTRADA">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="entradaCtrl">
+      <p>{{ ::entryTitle }}</p>
+      <div class="row code-container">
+        <div class="col-80 col-offset-10">
+          <div style="background: white; padding: 1em 0;">
+            <qrcode version="2" error-correction-level="H" size="180" data="{{code}}"></qrcode>
+          </div>
+          <h3 class="font-title-light align-center">Código: {{code}}</h3>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

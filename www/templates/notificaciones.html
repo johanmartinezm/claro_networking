@@ -1,0 +1,14 @@
+<ion-view id="notificaciones" view-title="NOTIFICACIONES" cache-view="false">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    <div class="padding">
+      <div class="card" ng-repeat="item in items">
+        <div class="item item-text-wrap {{item.color}}" ng-bind-html="item.message | unsafe" style="transition: background-color 300ms linear;" callnumber></div>
+      </div>
+      <div ng-if="!items.length" style="text-align:center">
+          <h4 class="font-title-light">{{noNotifications}}</h4>
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="scroll()" ng-if="!stop && items.length"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

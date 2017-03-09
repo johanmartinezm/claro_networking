@@ -1,0 +1,81 @@
+@media screen and (min-height : 320px) and (max-height : 500px) {
+  h4{
+    font-size: 16px;
+  }
+  h2{
+    font-size: 28px;
+  }
+  .thumb-button img{
+    border-radius: 80px;
+  }
+  .thumb-circle,
+  .thumb-button img,
+  .thumb-button i,
+  .img-button i,
+  #cocreacion .button.button-block i,
+  #networking i.icon-circle-lg,
+  #interactua .button-accordion i{
+
+  }
+  #intro .slider-slide.slide-1 {
+    padding: 25px 20px 20px;
+    .counter{
+      font-size: 3.5em;
+    }
+  }
+  #intro .slider-slide.slide-2 {
+    .item:nth-child(2){
+      border-bottom: none;
+    }
+    .item:last-child{
+      display: none;
+    }
+  }
+  #intro .slider-slide.slide-3 {
+    padding-top: 0;
+    .img-responsive {
+      max-width: 80%;
+      margin: 5% 10% 0;
+    }
+    .item-input .icon {
+      margin-right: 10px;
+    }
+    .padding {
+      padding: 0 3em;
+    }
+    .button.button-block{
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    .list-inset{
+      margin: 10px 0;
+    }
+  }
+  #side-menu .item .item-content i{
+    display: inline-block;
+    text-align: center;
+  }
+  #home{
+    .home-button .bottom .text {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-transform: capitalize;
+      line-height: 1em;
+    }
+    .home-button .bottom .text.small {
+      font-size: .8em;
+    }
+    .tabs{
+      padding-bottom: .5em;
+      padding-top: .5em;
+      height: 60px;
+      .tab-item .icon {
+        height: 25px;
+        font-size: 25px;
+      }
+    }
+    .padding.scroll-content{
+      margin-bottom:58px;
+    }
+  }
+}

@@ -1,0 +1,163 @@
+<ion-view id="actividad" view-title="ACTIVIDAD" cache-view="false">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    <!--<ion-refresher pulling-text="Actualizando..." on-refresh="refresh()"></ion-refresher>-->
+    
+    <ion-list ng-repeat="item in items" class="list list-transparent list-no-border">
+      <div class="item item-avatar item-icon-right">
+        <img class="thumb-border" ng-src="{{item.user_pic}}">
+        <h2>{{item.user_names}}</h2>
+        <h4 class="font-gray-medium">{{item.user_charge}}</h4>
+        <i data-icon="D" class="icon font-gray-medium icon-small">{{item.time}}</i>
+      </div>
+
+      <div class="item item-image">
+        <img class="img-responsive" ng-src="{{item.pic}}">
+      </div>
+
+      <div class="row">
+        <div class="col font-md" ng-bind-html="item.legend"></div>
+      </div>
+
+      <div class="row post-buttons">
+        <div class="col-50 me-gusta" ng-click="like(item)">
+          <i ng-if="!item.liked" data-icon="u" class="icon font-gray-medium icon-small"></i>
+          <i ng-if="item.liked" data-icon="u" class="icon font-red icon-small"></i>
+          {{item.likes}} Me gusta
+        </div>
+        <div class="col-50 align-right comparte" ng-click="openModal(item)">
+          Comparta y gane
+          <i data-icon="k" class="icon font-gray-medium icon-small"></i>
+        </div>
+      </div>
+      
+      <div class="post-comments">
+        <div class="row" ng-click="openComments(item)">
+          <h4 style="font-size:16px;" class="font-gray-medium font-light" ng-if="item.total_comments == 0">Sin comentarios</h4>
+          <h4 style="font-size:16px;" class="font-gray-medium font-light" ng-if="item.total_comments == 1">1 comentario</h4>
+          <h4 style="font-size:16px;" class="font-gray-medium font-light" ng-if="item.total_comments > 1"><span>{{item.total_comments}}</span> comentarios</h4>
+        </div>
+
+        <div class="row responsive-sm" ng-if="item.openedComments">
+          <div ng-repeat="c in item.comments">
+            <span><strong>{{ ::c.user_names }}</strong> {{ ::c.comment }}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <h4 style="font-size:16px;" class="font-gray-medium font-light">Comentar:</h4>
+        </div>
+
+        <div class="row">
+          <div class="col-80">
+            <label class="item item-input">
+              <input type="text" placeholder="" ng-model="item.message" maxlength="180">
+            </label>
+          </div>
+          <div class="col-20">
+            <button class="button button-assertive button-block no-margin" ng-click="addComment(item)">
+              <i data-icon="m" class="icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+
+    <ion-infinite-scroll on-infinite="scroll()" ng-if="requestLength === 5"></ion-infinite-scroll>
+
+  </ion-content>
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ng-click="newPost()">
+      <i class="icon-post"></i>
+    </a>
+  </div>
+</ion-view>
+
+<script id="modal-compartir.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content">
+          <div class="row buttons-head">
+            <div class="col-80 comparte">
+              Compartir <i data-icon="k" class="icon font-gray-medium icon-small"></i>
+            </div>
+            <div class="col-20 align-right">
+              <i ng-click="closeModal()" data-icon="h" class="icon font-gray-medium icon-small"></i>
+            </div>
+          </div>
+
+          <div class="row margin-top responsive-sm">
+            <div class="col-50" ng-if="item.pic">
+              <img style="border: solid 3px #CCC;" class="img-responsive" ng-src="{{ item.pic }}">
+            </div>
+            <div ng-class="item.pic ? 'col-50' : 'col'">
+              <div class="padding no-padding-top" ng-bind-html="item.legend"></div>
+            </div>
+          </div>
+
+          <div class="table margin-top">
+            <div class="table-cell text-center">
+              <i data-icon="E" class="icon font-red icon-small" style="margin-right:1.4em;" ng-click="twitter(item)"></i>
+              <i data-icon="q" class="icon font-red icon-small" ng-click="facebook(item)"></i>
+            </div>
+          </div>
+
+          <div class="row margin-top" style="font-size:.6em !important;">
+            <div class="text-center" style="width:100%;">En Facebook se cargará foto y # únicamente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>
+
+<script id="modal-newpost.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content">
+          <div class="row buttons-head">
+            <div class="col-80 comparte">Crear nuevo post</div>
+            <div class="col-20 align-right">
+              <i ng-click="closePost()" data-icon="h" class="icon font-gray-medium icon-small"></i>
+            </div>
+          </div>
+          <div class="padding">
+            <textarea ng-model="post.text" placeholder="¿En qué está pensando?"style="width: 100%;font-size: 1.2em;resize: none;"></textarea>
+          </div>
+
+          <div class="row" style="margin:0.3em 0;font-size: 2em;padding:0" ng-if="post.image">
+            <div class="col-25 align-center">
+            </div>
+            <div class="col-50 align-center">
+              <img ng-src="{{post.image}}" style="max-width: 100%"/>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:0.3em;font-size: 2em;">
+            <a class="tab-item">
+              <i data-icon="f" class="icon icon-circle-lg" ng-click="camera()"></i>
+              Cámara
+            </a>
+            <a class="tab-item">
+              <i class="icon ion-images" ng-click="gallery()"></i>
+              Galería
+            </a>
+            <a class="tab-item">
+              <i class="icon icon-post" ng-click="publish()"></i>
+              Publicar
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>
+
+

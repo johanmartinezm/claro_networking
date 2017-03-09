@@ -1,0 +1,46 @@
+// Fuentes:
+// Din Bold Alternate es para el inicio donde dice la palabra "CLARO"
+// Din Light Alternate es apra el inicio donde dice la frase "TECH SUMMIT 2016"
+// Para el resto de contenido inerno vamos a utilizar Roboto Condensed Normal y Bold.
+
+.font-title-bold,h1,h2,h3,h4,h5,h6{
+  font-family: 'dinboldalternate';
+  @extend .font-black;
+}
+.font-title-light, .title {
+  font-family: 'dinlightalternate';
+  font-weight: bold;
+}
+.font-bold {
+  font-family: 'robotobold_condensed';
+}
+.font-light, .view-container, .button{
+  font-family: 'robotocondensed';
+}
+.upper{
+  text-transform: uppercase;
+}
+.font-xs{
+  font-size: .4em;
+}
+.font-sm{
+  font-size: .8em!important;
+}
+.font-md{
+  font-size: 1em!important;
+}
+.font-lg{
+  font-size: 2em;
+}
+.font-xl{
+  font-size: 4em;
+}
+body, p{
+  @extend .font-gray;
+}
+.font-white{ color: $color-white !important; }
+.font-red{ color: $color-red !important; }
+.font-gray{ color: $color-gray; }
+.font-gray-medium{ color: $color-gray-medium !important; }
+.font-gray-light{ color: $color-gray-light !important; }
+.font-black{ color: $color-black; }
