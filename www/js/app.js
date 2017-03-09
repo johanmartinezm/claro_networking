@@ -18,10 +18,6 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
 
         // PushNotification
         PushNotificationDevice.init();
-
-
-        
-        $cordovaPlugin.someFunction().then(success, error);
         
 
         if(!window.cordova)return;

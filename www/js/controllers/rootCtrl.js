@@ -181,5 +181,5 @@ angular.module('app')
 		$interval.cancel($scope.interval);
   	});
 
-  	$rootScope.getNotifications();
+  	//$rootScope.getNotifications();
 })

@@ -622,3 +622,63 @@
 .toggle-small.item-toggle .toggle {
   top: 6px;
 }
+
+#listevent{
+  @extend .linear-gradient-gray;
+
+  .frase_list{
+    text-align: center;
+    @extend .padding-top;
+  }
+
+  .desc_event{
+    padding: $padding-lg;
+    margin-bottom: 20px;
+
+
+    h2{
+      text-transform: uppercase;
+      font-size: 1.5em;
+    }
+
+    .btns_list{
+
+      button{
+        background: $color-red;
+        color: $color-white;
+        text-transform: uppercase;
+
+        &.right{
+          float: right;
+        }
+      }
+
+      a{
+        display: inline-block;
+
+        &.btn_entrar{
+          background-image: url(../img/bt_entrar.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 105px;
+          height: 29px;
+          font-size: 0px;
+          float: left;
+        }
+
+        &.btn_calendario{
+          background-image: url(../img/bt_anadir_calendario.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 178px;
+          height: 29px;
+          font-size: 0px;
+          float: right;
+        }
+      }
+    }
+  }
+  
+
+  
+}
