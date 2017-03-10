@@ -1,0 +1,80 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-contacts": {
+            "CONTACTS_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-crop": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "call-number": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-calendar": {
+            "CALENDAR_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -63,12 +63,8 @@
 }
 
 
-
 .icon-abajo:before {
   content: "\61";
-}
-.icon-actividad:before {
-  content: "\62";
 }
 .icon-agenda:before {
   content: "\63";
@@ -187,6 +183,19 @@
 .icon-hotel:before {
   content: "\4f";
 }
+.icon-eventos:before {
+  content: "\50";
+}
+.icon-mis-ideas:before {
+  content: "\51";
+}
+.icon-home-eventos:before {
+  content: "\52";
+}
+.icon-info-evento:before {
+  content: "\53";
+}
+
 
 
 [data-icon]:before {
