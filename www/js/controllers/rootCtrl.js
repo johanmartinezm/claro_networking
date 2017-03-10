@@ -4,7 +4,7 @@
 
 angular.module('app')
 
-.controller('rootCtrl', function($scope, $state, session, messages, $ionicPopup, camera, $ionicHistory, $timeout, ajax, $rootScope, $interval, PushNotificationDevice) {
+.controller('rootCtrl', function($scope,$location, $state, session, messages, $ionicPopup, camera, $ionicHistory, $timeout, ajax, $rootScope, $interval, PushNotificationDevice) {
 	
 	var type = session('user_type');
 	$rootScope.notifications = [];
@@ -13,9 +13,9 @@ angular.module('app')
 
 	$scope.menu_active = true;
 	
-
+	
 	if($rootScope.sec === 'event.list'){
-		console.log($rootScope.sec);
+		//console.log($rootScope.sec);
 
 		$scope.menu_active = false;
 	}
@@ -172,9 +172,9 @@ angular.module('app')
 
 	try{
 		var delay = JSON.parse(localStorage.config).ajax_notification_delay * 1000;
-		$scope.interval = $interval($rootScope.getNotifications, delay);
+		//$scope.interval = $interval($rootScope.getNotifications, delay);
 	}catch(e){
-		$scope.$scope.interval = $interval($rootScope.getNotifications, 15000);
+		//$scope.$scope.interval = $interval($rootScope.getNotifications, 15000);
 	}
 
 	$scope.$on('$destroy', function() {

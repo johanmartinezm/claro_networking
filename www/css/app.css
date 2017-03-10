@@ -826,8 +826,8 @@ ul.rating li i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-[class^="ico-app-"]:before,
-[class*=" ico-app-"]:before {
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
   font-family: "app-icons" !important;
   font-style: normal !important;
   font-weight: normal !important;
@@ -1338,7 +1338,8 @@ ul.rating li i {
   margin-bottom: 20px; }
   #listevent .desc_event h2 {
     text-transform: uppercase;
-    font-size: 1.5em; }
+    font-size: 1.3em;
+    color: #414042; }
   #listevent .desc_event .btns_list button {
     background: #e2231a;
     color: #FFF;

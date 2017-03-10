@@ -2,7 +2,7 @@
 
 angular.module('app')
 
-.controller('listeventCtrl', function($scope,$cordovaCalendar) {
+.controller('listeventCtrl', function($scope,$state,$cordovaCalendar) {
 
 
 	$scope.createEvent = function() {
@@ -17,6 +17,10 @@ angular.module('app')
         }, function (err) {
             console.error("There was an error: " + err);
         });
+    }
+
+    $scope.inEvent = function() {
+    	$state.go('event.home');    	
     }
 
 		

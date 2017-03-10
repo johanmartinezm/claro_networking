@@ -1,6 +1,6 @@
 angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 'tabSlideBox', 'ionic.rating', 'monospaced.qrcode','ngCordova'])
 
-.run(function($ionicPlatform, ajax, messages, $rootScope, $ionicPopup, PushNotificationDevice) {
+.run(function($ionicPlatform,$location, ajax, messages, $rootScope, $ionicPopup, PushNotificationDevice) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -48,11 +48,20 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
         if(to.name === 'intro' && localStorage.session){
             e.preventDefault();    
         }
+        console.log(to.name);
+        $rootScope.sec = true;
 
-        $rootScope.sec = to.name;
+        if(to.name === 'event.list'){
+        //console.log($rootScope.sec);
+
+            $rootScope.sec = false;
+        }
 
         if(window.analytics) analytics.trackView(to.url);
     });
+
+
+   
 })
 
 .config(function($ionicConfigProvider) {

@@ -181,8 +181,7 @@ angular.module('app.routes', [])
       }
     }
     
-  })
-  
+  })  
 
   .state('event', {
     url: '/event',

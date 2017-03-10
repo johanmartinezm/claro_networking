@@ -66,7 +66,7 @@ angular.module('app')
 				localStorage.identify = data.id;
 				localStorage.token = data.token;
 				PushNotificationDevice.sendServer();
-				$state.go('events.listevent');
+				$state.go('event.list');
 				
 			}, 
 			error : function(data){
