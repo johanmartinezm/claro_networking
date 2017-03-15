@@ -48,12 +48,11 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
         if(to.name === 'intro' && localStorage.session){
             e.preventDefault();    
         }
-        console.log(to.name);
+        
         $rootScope.sec = true;
 
         if(to.name === 'event.list'){
-        //console.log($rootScope.sec);
-
+        
             $rootScope.sec = false;
         }
 

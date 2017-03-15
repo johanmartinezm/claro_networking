@@ -11,16 +11,7 @@ angular.module('app')
 	$rootScope.notifications.page = 1;
 	$scope.notifications = $rootScope.notifications;
 
-	$scope.menu_active = true;
 	
-	
-	if($rootScope.sec === 'event.list'){
-		//console.log($rootScope.sec);
-
-		$scope.menu_active = false;
-	}
-
-
 	$scope.menuItems = [
 		{
 			sref: 'event.home',
