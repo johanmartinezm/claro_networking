@@ -24,7 +24,7 @@ angular.module('app')
 			method : 'POST',
 			data : {
 				answers : data
-			}, 
+			},
 			loading : false,
 			signHmac : true,
 			success : function(){
@@ -41,7 +41,7 @@ angular.module('app')
 	};
 
 	ajax({
-		endpoint : '/company/poll',
+		endpoint : '/company/poll/' + localStorage.currentEvent || 0,
 		signHmac : true,
 		showError : true,
 		success : function(data){
@@ -89,12 +89,12 @@ angular.module('app')
 			})
 			if(!control){
 				item.class = 'button-default';
-				item.answer = false;	
-			}	
+				item.answer = false;
+			}
 		}
 	}
 
-	
+
 	$ionicModal.fromTemplateUrl('modal-encuesta.html', {
 	    scope: $scope,
 	    animation: 'slide-in-up'
@@ -109,5 +109,5 @@ angular.module('app')
 			$state.go('event.home');
 		});
 	};
-	
+
 })

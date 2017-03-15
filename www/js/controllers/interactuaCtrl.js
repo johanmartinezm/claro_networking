@@ -10,7 +10,7 @@ angular.module('app')
 	var interact = JSON.parse(localStorage.interact || '[]');
 
 	ajax({
-		endpoint : '/speaker/questions/all',
+		endpoint : '/speaker/questions/all/' + localStorage.currentEvent || 0,
 		signHmac : true,
 		showError : true,
 		success : function(data){

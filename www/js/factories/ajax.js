@@ -6,7 +6,7 @@ angular.module('app')
 
 .factory('ajax', function($http, $ionicPopup, $ionicLoading,messages){
     var online = navigator.onLine;
-    var urlServices = 'http://eventosclaro.com.co/ClaroTechSummitServices/public/api/v1';
+    var urlServices = 'http://eventosclaro.com.co/claro_eventos/public/api/v1';
     urlServices = localStorage.urlServices || urlServices;
     localStorage.urlServices = urlServices;
 
@@ -37,15 +37,15 @@ angular.module('app')
     }
 
     var signHmac = function(options){
-        var url = urlServices + options.endpoint;
-        var nonce = Math.random().toString(20).substring();
-        var postMD5 = CryptoJS.MD5(JSON.stringify(options.data)).toString();
-        var data = [options.method, url, localStorage.identify, nonce, postMD5].join('');
-        var sign = CryptoJS.MD5(localStorage.identify+localStorage.password).toString();
-        var hmac = CryptoJS.HmacSHA256(data, sign).toString();
-        var digest = btoa(hmac);
-        options.headers['Authentication'] = [localStorage.identify, nonce, digest, postMD5].join(':');
-        options.headers['Timestamp'] =  Date.now() / 1000 | 0;
+      var url = urlServices + options.endpoint;
+      var nonce = Math.random().toString(20).substring();
+      var postMD5 = CryptoJS.MD5(JSON.stringify(options.data)).toString();
+      var data = [options.method, url, localStorage.identify, nonce, postMD5].join('');
+      var sign = CryptoJS.MD5(localStorage.identify+localStorage.password).toString();
+      var hmac = CryptoJS.HmacSHA256(data, sign).toString();
+      var digest = btoa(hmac);
+      options.headers['Authentication'] = [localStorage.identify, nonce, digest, postMD5].join(':');
+      options.headers['Timestamp'] =  Date.now() / 1000 | 0;
     }
 
     var request = function(options){
@@ -57,7 +57,7 @@ angular.module('app')
                 try{
                     errorMessage = data.message || errorMessage;
                 }catch(e){}
-            
+
                 $ionicPopup.alert({
                     template: messages(errorMessage)
                 });
@@ -113,8 +113,8 @@ angular.module('app')
     }
 
     return function(options){
-        validateOptions(options);
-        if(options.signHmac) signHmac(options);
-        request(options);
+      validateOptions(options);
+      if(options.signHmac) signHmac(options);
+      request(options);
     }
 })

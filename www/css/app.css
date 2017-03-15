@@ -1348,7 +1348,9 @@ ul.rating li i {
       float: right; }
   #listevent .desc_event .btns_list a {
     display: inline-block; }
-    #listevent .desc_event .btns_list a.btn_entrar {
+    #listevent .desc_event .btns_list a.btn_entrar,
+    #listevent .desc_event .btns_list a.bt_registrar,
+    #listevent .desc_event .btns_list a.bt_espera {
       background-image: url(../img/bt_entrar.png);
       background-size: 100%;
       background-repeat: no-repeat;
@@ -1356,6 +1358,16 @@ ul.rating li i {
       height: 29px;
       font-size: 0px;
       float: left; }
+    #listevent .desc_event .btns_list a.bt_registrar {
+      background-image: url(../img/bt_registrar.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    #listevent .desc_event .btns_list a.bt_espera {
+      background-image: url(../img/bt_espera.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
     #listevent .desc_event .btns_list a.btn_calendario {
       background-image: url(../img/bt_anadir_calendario.png);
       background-size: 100%;

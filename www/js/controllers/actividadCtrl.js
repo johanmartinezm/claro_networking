@@ -44,7 +44,7 @@ angular.module('app')
 		if(requesting)return;
 		requesting = true;
 		ajax({
-			endpoint : '/content/all/'+ (p || page),
+			endpoint : '/content/all/' + localStorage.currentEvent || 0 + '/' + (p || page),
 			showError: true,
 			signHmac : true,
 			loading : page === 0,
@@ -101,7 +101,7 @@ angular.module('app')
 							}
 							$scope.$broadcast('scroll.refreshComplete');
 						}
-						
+
 						requesting = false;
 					}
 				})
@@ -229,7 +229,7 @@ angular.module('app')
 					item.comments.unshift(comment);
 				}
 				item.total_comments++;
-			}	
+			}
 		})
 	}
 
@@ -262,6 +262,7 @@ angular.module('app')
 				signHmac : true,
 				method : 'POST',
 				data : {
+					event : localStorage.currentEvent || 0,
 					legend : $scope.post.text || ''
 				},
 				success : function(data){
@@ -274,7 +275,7 @@ angular.module('app')
 		$scope.camera = function(){
 			camera.take($scope.uploadFile);
 		}
- 
+
 		$scope.gallery = function(){
 			camera.gallery($scope.uploadFile)
 		}

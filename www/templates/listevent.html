@@ -1,47 +1,21 @@
 
 <ion-view id="listevent" hide-back-button="true" view-title="CLARO NETWORKING">
-	<ion-content >
-		
+	<ion-content>
 		<p class="frase_list">Seleciona el evento al que quieras registrar</p>
 
-		<div >
-			<img style="display:block;" class="img-responsive" src="img/eventos/evento1.jpg">
+		<div ng-repeat="event in events">
+			<img style="display:block;" class="img-responsive" src="{{ ::event.image }}">
 			<div class="desc_event">
-				<h2>Evento 1</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor voluptas et ea odio voluptatum </p>					
+				<h2>{{ ::event.name_event }}</h2>
+				<p>{{ ::event.descrip }}</p>
 				<div class="btns_list">
-					<a href="" ng-click="inEvent()" class="btn_entrar">Entrar</a>
-					<a href="" ng-click="createEvent()" class="btn_calendario">Añadir al calendario</a>
+					<a href="" ng-click="logInEvent(event)" ng-if="event.active == 1" class="btn_entrar">Entrar</a>
+					<a href="" ng-if="event.active == 0" class="bt_espera">En espera</a>
+					<a href="" ng-click="signInEvent(event)" ng-if="event.active == null" class="bt_registrar">Registrarme</a>
+					<a href="" ng-click="addToCalendar(event)" class="btn_calendario">Añadir al calendario</a>
 				</div>
 			</div>
 		</div>
 
-		<div >
-			<img style="display:block;" class="img-responsive" src="img/eventos/evento2.jpg">
-			<div class="desc_event">
-				<h2>Evento 2</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor voluptas et ea odio voluptatum </p>					
-				<div class="btns_list">
-					<a href="" class="btn_entrar">Entrar</a>
-					<a href="" ng-click="createEvent()" class="btn_calendario">Añadir al calendario</a>
-				</div>
-			</div>
-		</div>
-
-
-		<div >
-			<img style="display:block;" class="img-responsive" src="img/eventos/evento3.jpg">
-			<div class="desc_event">
-				<h2>Evento 3</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor voluptas et ea odio voluptatum </p>					
-				<div class="btns_list">
-					<a href="" class="btn_entrar">Entrar</a>
-					<a href="" ng-click="createEvent()" class="btn_calendario">Añadir al calendario</a>
-				</div>
-			</div>
-		</div>
-	
-		
 	</ion-content>
 </ion-view>
-

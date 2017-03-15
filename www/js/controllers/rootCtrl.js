@@ -5,21 +5,18 @@
 angular.module('app')
 
 .controller('rootCtrl', function($scope,$location, $state, session, messages, $ionicPopup, camera, $ionicHistory, $timeout, ajax, $rootScope, $interval, PushNotificationDevice) {
-	
+
 	var type = session('user_type');
 	$rootScope.notifications = [];
 	$rootScope.notifications.page = 1;
 	$scope.notifications = $rootScope.notifications;
-
 	$scope.menu_active = true;
-	
-	
+
+
 	if($rootScope.sec === 'event.list'){
 		//console.log($rootScope.sec);
-
 		$scope.menu_active = false;
 	}
-
 
 	$scope.menuItems = [
 		{
@@ -27,6 +24,11 @@ angular.module('app')
 			icon: 't',
 			text: 'Home',
 			active: true
+		},
+		{
+			sref: 'event.list',
+			icon: 't',
+			text: 'Eventos',
 		},
 		{
 			sref: 'event.agenda',
@@ -54,10 +56,15 @@ angular.module('app')
 			text: 'Notificaciones',
 			badge: true
 		},
-		{
+		/*{
 			sref: 'event.casosdeexito',
 			icon: 'g',
 			text: 'Casos de éxito'
+		},*/
+		{
+			sref: 'event.casosdeexito',
+			icon: 'g',
+			text: 'Mis ideas'
 		},
 		{
 			sref: 'event.actividad',
@@ -99,8 +106,8 @@ angular.module('app')
 			icon: 'B',
 			text: 'Cerrar sesión'
 		},
-	];  
-	
+	];
+
 	if(type === 'ex' || type === 'ex-cli'){
 		$scope.menuItems.splice(9, 1)
 	}
@@ -143,8 +150,9 @@ angular.module('app')
 	}
 
 	$rootScope.getNotifications = function(){
+		var url = '/notification/all/' + localStorage.currentEvent + "/1";
 		ajax({
-			endpoint : '/notification/all',
+			endpoint : url,
 			loading : false,
 			signHmac : true,
 			success : function(data){
@@ -163,23 +171,24 @@ angular.module('app')
 						$rootScope.notifications.read++;
 					}
 				})
-			}, 
+			},
 			error : function(){
 				$rootScope.notifications.page = 0;
 			}
 		})
 	}
 
-	try{
-		var delay = JSON.parse(localStorage.config).ajax_notification_delay * 1000;
-		//$scope.interval = $interval($rootScope.getNotifications, delay);
-	}catch(e){
-		//$scope.$scope.interval = $interval($rootScope.getNotifications, 15000);
+	$rootScope.startListeningNotification = function() {
+		// activate listening notification
+		try{
+			var delay = JSON.parse(localStorage.config).ajax_notification_delay * 1000;
+			$scope.interval = $interval($rootScope.getNotifications, delay);
+		}catch(e){
+			$scope.interval = $interval($rootScope.getNotifications, 15000);
+		}
 	}
 
 	$scope.$on('$destroy', function() {
 		$interval.cancel($scope.interval);
-  	});
-
-  	//$rootScope.getNotifications();
+	});
 })

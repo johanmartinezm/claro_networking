@@ -6,12 +6,14 @@ angular.module('app')
 
 .controller('cocreacionCtrl', function($scope, $state, ajax, cachedImage, $ionicModal ,messages, camera, $ionicPopup) {
 
-	$scope.post = {}
+	$scope.post = {
+		event: localStorage.currentEvent
+	}
 	$scope.maxHeight = ($(window).height() * 0.8) + 'px';
 
 	var getAll = function(loading){
 		ajax({
-			endpoint : '/idea/all',
+			endpoint : '/idea/all/' + localStorage.currentEvent || 0 + '/1',
 			signHmac : true,
 			loading : loading,
 			success : function(data){
@@ -29,7 +31,7 @@ angular.module('app')
 							image : e.user_pic,
 							type : 'user',
 							obj : e
-						});	
+						});
 					}
 				})
 				cachedImage({
@@ -37,7 +39,7 @@ angular.module('app')
 					set : function(e, image){
 						if(e.type === 'idea'){
 							e.obj.image = image;
-						}	
+						}
 						else{
 							e.obj.photo = image;
 						}
@@ -65,7 +67,7 @@ angular.module('app')
 
 	var getTop = function(loading){
 		ajax({
-			endpoint : '/idea/top',
+			endpoint : '/idea/top/' + localStorage.currentEvent || 0 + '/1',
 			signHmac : true,
 			loading : loading,
 			success : function(data){
@@ -83,7 +85,7 @@ angular.module('app')
 							image : e.user_pic,
 							type : 'user',
 							obj : e
-						});	
+						});
 					}
 				})
 				cachedImage({
@@ -91,7 +93,7 @@ angular.module('app')
 					set : function(e, image){
 						if(e.type === 'idea'){
 							e.obj.image = image;
-						}	
+						}
 						else{
 							e.obj.photo = image;
 						}
@@ -168,7 +170,7 @@ angular.module('app')
 			camera.take($scope.uploadFile);
 			$scope.closeModal();
 		}
- 
+
 		$scope.gallery = function(){
 			camera.gallery($scope.uploadFile)
 			$scope.closeModal();
@@ -177,8 +179,8 @@ angular.module('app')
 		$scope.uploadFile = function(file, url, filename){
 			$scope.$apply(function(){
 				$scope.file = file;
-				$scope.filename = filename;	
-			})		
+				$scope.filename = filename;
+			})
 		}
 	}
 

@@ -7,7 +7,7 @@ angular.module('app')
 .controller('conferencistasCtrl', function($scope, $state, ajax, cachedImage, $rootScope) {
 
 	ajax({
-		endpoint : '/speaker',
+		endpoint : '/speaker/' + localStorage.currentEvent || 0,
 		showError: true,
 		success : function(data){
 			cachedImage({
