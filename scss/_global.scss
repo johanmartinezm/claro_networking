@@ -2,9 +2,25 @@
   background-color: $color-gray-medium;
   .item{
     background-color: transparent;
+    text-align: center;
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+    overflow: visible;
+    min-height: 65px;
+    float: left;
+    width: 100%;
+
+
+    &:last-child{
+      border-bottom: 0px solid #ddd;
+    }
+
     a{
       min-height: 65px;
+      
+      width: 100%;
     }
+
     &.active{
       .item-content{
         background-color: $color-white;
@@ -17,7 +33,8 @@
     .item-content{
       background-color: transparent;
       color: $color-gray-light-1;
-      padding: 13px 5px 5px;
+      padding: 0px;
+      padding-top: 15px;
       .row, .col{
         padding: 0;
       }
@@ -32,6 +49,9 @@
         text-overflow: initial;
         white-space: normal;
         word-wrap: break-word;
+        width: 60px;
+        margin: 0 auto;
+        padding-bottom: 10px;
       }
       .badge{
         background-color: $color-red;
@@ -76,6 +96,7 @@
   .slider-slide{
     @extend .linear-gradient-gray;
     padding-top: 40px;
+    text-align: center;
     
     &.slide-1{
       @extend .align-center;
@@ -115,6 +136,7 @@
       }
       .list-inset, .item-input{
         overflow: inherit;
+        text-align: left;
       }
       label.item.item-input{
         margin-bottom: 10px;
@@ -663,6 +685,26 @@
           background-repeat: no-repeat;
           width: 105px;
           height: 29px;
+          font-size: 0px;
+          float: left;
+        }
+
+        &.btn_espera{
+          background-image: url(../img/bt_espera.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 105px;
+          height: 58px;
+          font-size: 0px;
+          float: left;
+        }
+
+        &.btn_registrar{
+          background-image: url(../img/bt_registrar.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 105px;
+          height: 58px;
           font-size: 0px;
           float: left;
         }

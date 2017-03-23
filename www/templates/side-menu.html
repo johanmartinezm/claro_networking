@@ -9,10 +9,10 @@
     <ion-nav-view name="side-menu"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="right" id="side-menu" width="80">
+  <ion-side-menu side="right" is-enabled="$parent.sec"  id="side-menu" width="80">
     <ion-content padding="false" class="side-menu-right" overflow-scroll="true">
       <ion-list>
-        <ion-item ng-repeat="item in menuItems" ng-class="{active:item.active}" class="item item-complex" menu-close="">
+        <ion-item ng-repeat="item in $parent.menuItems" ng-class="{active:item.active}" class="item item-complex" menu-close="">
           <a class="item-content" ng-click="action({{item}})">
             <div class="row">
               <div class="col text-center">

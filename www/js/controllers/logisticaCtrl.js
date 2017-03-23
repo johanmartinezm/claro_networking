@@ -6,7 +6,7 @@ angular.module('app')
 
 .controller('logisticaCtrl', function($scope, $state, ajax, cachedImage, $ionicModal) {
 
-	var config = JSON.parse(localStorage.config);
+	var config = JSON.parse(localStorage.eventConfig);
 
 	ajax({
 		endpoint : '/route',

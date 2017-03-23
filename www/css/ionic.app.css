@@ -3937,9 +3937,9 @@ a.subdued {
     .bar.bar-stable.bar-footer {
       background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
-    border-color: #9e2927;
-    background-color: #c73431;
-    background-image: linear-gradient(0deg, #9e2927, #9e2927 50%, transparent 50%);
+    border-color: #a32d24;
+    background-color: #e2231a;
+    background-image: linear-gradient(0deg, #a32d24, #a32d24 50%, transparent 50%);
     color: #fff; }
     .bar.bar-positive .title {
       color: #fff; }
@@ -4095,6 +4095,7 @@ a.subdued {
   font-size: 24px; }
 
 .platform-android .bar .title {
+  text-transform: uppercase;
   font-size: 19px;
   line-height: 50px; }
 

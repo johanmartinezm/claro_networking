@@ -10,7 +10,13 @@
         "call-number": {
             "PACKAGE_NAME": "com.claro.claronetworking"
         },
+        "com.lampa.startapp": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
         "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.claro.claronetworking"
+        },
+        "cordova-plugin-appavailability": {
             "PACKAGE_NAME": "com.claro.claronetworking"
         },
         "cordova-plugin-calendar": {
@@ -68,12 +74,6 @@
             "PACKAGE_NAME": "com.claro.claronetworking"
         },
         "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
-        },
-        "com.lampa.startapp": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
-        },
-        "cordova-plugin-appavailability": {
             "PACKAGE_NAME": "com.claro.claronetworking"
         }
     },

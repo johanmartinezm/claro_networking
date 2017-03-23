@@ -8,12 +8,15 @@ angular.module('app')
     var config;
 
     return function(tag){
-    	config = config || JSON.parse(localStorage.config)
-    	for (var i =0; i<config.message_copies.length;i++){
-    		if(config.message_copies[i].tag === tag){
-    			return config.message_copies[i].message;
-    		}
-    	}
+      if (localStorage.config) {
+        config = JSON.parse(localStorage.config)
+        for (var i =0; i<config.message_copies.length;i++){
+      		if(config.message_copies[i].tag === tag){
+      			return config.message_copies[i].message;
+      		}
+      	}
+      }
+
     	return tag;
     }
 })

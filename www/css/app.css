@@ -890,9 +890,19 @@ ul.rating li i {
 #side-menu {
   background-color: #939598; }
   #side-menu .item {
-    background-color: transparent; }
+    background-color: transparent;
+    text-align: center;
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+    overflow: visible;
+    min-height: 65px;
+    float: left;
+    width: 100%; }
+    #side-menu .item:last-child {
+      border-bottom: 0px solid #ddd; }
     #side-menu .item a {
-      min-height: 65px; }
+      min-height: 65px;
+      width: 100%; }
     #side-menu .item.active .item-content {
       background-color: #FFF;
       color: #e2231a; }
@@ -901,7 +911,8 @@ ul.rating li i {
     #side-menu .item .item-content {
       background-color: transparent;
       color: #f1f2f2;
-      padding: 13px 5px 5px; }
+      padding: 0px;
+      padding-top: 15px; }
       #side-menu .item .item-content .row, #side-menu .item .item-content .col {
         padding: 0; }
       #side-menu .item .item-content i {
@@ -913,7 +924,10 @@ ul.rating li i {
         line-height: 12px;
         text-overflow: initial;
         white-space: normal;
-        word-wrap: break-word; }
+        word-wrap: break-word;
+        width: 60px;
+        margin: 0 auto;
+        padding-bottom: 10px; }
       #side-menu .item .item-content .badge {
         background-color: #e2231a;
         color: #FFF;
@@ -946,7 +960,8 @@ ul.rating li i {
 #intro .slider {
   height: 100%; }
 #intro .slider-slide {
-  padding-top: 40px; }
+  padding-top: 40px;
+  text-align: center; }
   #intro .slider-slide.slide-1 {
     padding: 60px 40px 40px;
     background: url(../img/intro/bg.jpg) no-repeat;
@@ -968,7 +983,8 @@ ul.rating li i {
     background-color: transparent;
     border: none; }
   #intro .slider-slide.slide-2 .list-inset, #intro .slider-slide.slide-2 .item-input {
-    overflow: inherit; }
+    overflow: inherit;
+    text-align: left; }
   #intro .slider-slide.slide-2 label.item.item-input {
     margin-bottom: 10px; }
   #intro .slider-slide.slide-2 .icon-help {
@@ -1354,6 +1370,22 @@ ul.rating li i {
       background-repeat: no-repeat;
       width: 105px;
       height: 29px;
+      font-size: 0px;
+      float: left; }
+    #listevent .desc_event .btns_list a.btn_espera {
+      background-image: url(../img/bt_espera.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 105px;
+      height: 58px;
+      font-size: 0px;
+      float: left; }
+    #listevent .desc_event .btns_list a.btn_registrar {
+      background-image: url(../img/bt_registrar.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 105px;
+      height: 58px;
       font-size: 0px;
       float: left; }
     #listevent .desc_event .btns_list a.btn_calendario {

@@ -7,7 +7,7 @@ angular.module('app')
 .controller('usuariostopCtrl', function($scope, $state, ajax, cachedImage, $ionicModal) {
 
 	ajax({
-		endpoint : '/score',
+		endpoint : '/score/' + localStorage.currentEvent || 0,
 		showError: true,
 		signHmac : true,
 		success : function(data){

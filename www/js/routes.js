@@ -70,6 +70,16 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('event.informacion', {
+    url: '/informacion',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/informacion.html',
+        controller: 'informacionCtrl'
+      }
+    }
+  })
+
   .state('event.entrada', {
     url: '/entrada',
     views: {

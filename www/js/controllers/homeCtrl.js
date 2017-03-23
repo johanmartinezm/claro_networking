@@ -7,11 +7,13 @@ angular.module('app')
 .controller('homeCtrl', function($scope, $state, $rootScope) {
 	$scope.notifications = $rootScope.notifications;
 
+    $scope.event_info = $rootScope.event;
+
 
 	$scope.new_app = function(){
 
 		if(device.platform === 'iOS') {
-            scheme = 'twitter://';
+            scheme = 'clarora://';
             var url = 'https://appsto.re/co/Dte3cb.i';
         }
         else if(device.platform === 'Android') {
@@ -27,7 +29,7 @@ angular.module('app')
             function() {  // Success callback
                 //window.open('com.claro.clarotechsummit', '_system', 'location=no');
                 sApp.start(function() { /* success */
-				    console.log("OK");
+				    //console.log("OK");
 				}, function(error) { /* fail */
 				    console.log(error);
 				    
@@ -38,7 +40,7 @@ angular.module('app')
             },
             function() {  // Error callback
                 
-                console.log('Twitter is not available');
+                //console.log('Twitter is not available');
                 cordova.InAppBrowser.open(url,'_system');
             }
         );      

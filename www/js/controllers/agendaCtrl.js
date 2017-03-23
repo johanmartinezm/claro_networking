@@ -5,9 +5,9 @@
 angular.module('app')
 
 .controller('agendaCtrl', function($scope, $state, ajax, session, cachedImage) {
-	
+
 	ajax({
-		endpoint : '/agenda/all',
+		endpoint : '/agenda/all/' +  localStorage.currentEvent || 0,
 		showError: true,
 		signHmac : true,
 		success : function(data){

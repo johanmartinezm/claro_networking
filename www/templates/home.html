@@ -1,4 +1,4 @@
-<ion-view id="home" hide-back-button="true" view-title="CLARO NETWORKING">
+<ion-view id="home" hide-back-button="true" view-title="{{event_info.name_event}}">
   <ion-content class="padding">
     <div class="row">
       <div class="col">
@@ -12,10 +12,10 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="home-button" ui-sref="event.logistica">
+        <div class="home-button" ui-sref="event.informacion">
           <img style="display:block;" class="img-responsive" src="img/home/logistica-itinerarios.jpg">
           <div class="bottom">
-            <strong class="text small">Logística</strong>
+            <strong class="text small">Información</strong>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
         <div class="home-button" ui-sref="event.casosdeexito">
           <img style="display:block;" class="img-responsive" src="img/home/cocreacion.jpg">
           <div class="bottom">
-            <strong class="text small">Casos de éxito</strong>
+            <strong class="text small">Mis ideas</strong>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <button ng-click="new_app()">App</button>
+        <a ng-click="new_app()"><img style="display:inline-block;" class="img-responsive" src="http://www.eventosclaro.com.co/claro_eventos/storage/home/banner_RA.jpg"></a>
       </div>
     </div>
   </ion-content>

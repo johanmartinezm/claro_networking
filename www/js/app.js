@@ -18,27 +18,35 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
 
         // PushNotification
         PushNotificationDevice.init();
-        
 
-        if(!window.cordova)return;
-        cordova.getAppVersion.getVersionNumber().then(function (version) {
-            if($('body.platform-android').length){
-                if(version !== messages('app_version_android')){
-                    $ionicPopup.alert({
-                        template: messages('update_available_android')
-                    });
-                }
-            }
-            if($('body.platform-ios').length){
-                if(version !== messages('app_version_ios')){
-                    /*$ionicPopup.alert({
-                        template: messages('update_available_ios')
-                    });*/
-                }
-            }
+        // Busca la configuración
+        ajax({
+            endpoint : '/config/app_g_config',
+            showError: true,
+            success : function(data){
+                localStorage.config = JSON.stringify(data);
+                localStorage.bigSuccessForm = JSON.stringify(data.big_success_form);
+
+                if(!window.cordova)return;
+                cordova.getAppVersion.getVersionNumber().then(function (version) {
+                    if($('body.platform-android').length){
+                        if(version !== messages('app_version_android')){
+                            /*$ionicPopup.alert({
+                                template: messages('update_available_android')
+                            });*/
+                        }
+                    }
+                    if($('body.platform-ios').length){
+                        if(version !== messages('app_version_ios')){
+                            /*$ionicPopup.alert({
+                                template: messages('update_available_ios '+localStorage.countdown )
+                            });*/
+                        }
+                    }
+                });
+            },
+            error: function(e){console.log("error ;DD")}
         });
-
-        
     });
 
     $rootScope.$on('$stateChangeStart', function(e, to) {
@@ -46,7 +54,7 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
             e.preventDefault();
         }
         if(to.name === 'intro' && localStorage.session){
-            e.preventDefault();    
+            e.preventDefault();
         }
         
         $rootScope.sec = true;
@@ -58,9 +66,6 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
 
         if(window.analytics) analytics.trackView(to.url);
     });
-
-
-   
 })
 
 .config(function($ionicConfigProvider) {

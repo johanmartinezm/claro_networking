@@ -40,11 +40,20 @@ angular.module('app')
 		}, 1000);
 	}
 
+	var objectFindByKey = function(array, key, value) {
+		    for (var i = 0; i < array.length; i++) {
+	        if (array[i][key] === value) {
+	            return array[i];
+	        }
+	    }
+	    return null;
+	}
+
 	$scope.loadContent = function(p){
 		if(requesting)return;
 		requesting = true;
 		ajax({
-			endpoint : '/content/all/'+ (p || page),
+			endpoint : '/content/all/' + localStorage.currentEvent || 0 + '/' + (p || page),
 			showError: true,
 			signHmac : true,
 			loading : page === 0,
@@ -101,7 +110,7 @@ angular.module('app')
 							}
 							$scope.$broadcast('scroll.refreshComplete');
 						}
-						
+
 						requesting = false;
 					}
 				})
@@ -160,8 +169,8 @@ angular.module('app')
 			})
 		}, function(){
 			$ionicPopup.alert({
-        template: messages('no_twitter')
-      });
+		        template: messages('no_twitter')
+		    });
 		})
 	}
 
@@ -174,8 +183,8 @@ angular.module('app')
 			})
 		}, function(){
 			$ionicPopup.alert({
-        template: messages('no_facebook')
-      });
+		        template: messages('no_facebook')
+		    });
 		})
 	}
 
@@ -229,12 +238,18 @@ angular.module('app')
 					item.comments.unshift(comment);
 				}
 				item.total_comments++;
-			}	
+			}
 		})
 	}
 
 	$scope.newPost = function(){
-		$scope.post = {text:messages('default_post_hashtag')};
+
+
+		var config = JSON.parse(localStorage.eventConfig);
+
+		var message_ = objectFindByKey(config.message_copies,'tag','default_post_hashtag'); 		
+
+		$scope.post = {text:messages(message_.message)};
 		$ionicModal.fromTemplateUrl('modal-newpost.html', {
 			scope: $scope,
 			animation: 'slide-in-up'
@@ -262,6 +277,7 @@ angular.module('app')
 				signHmac : true,
 				method : 'POST',
 				data : {
+					event : localStorage.currentEvent || 0,
 					legend : $scope.post.text || ''
 				},
 				success : function(data){
@@ -274,7 +290,7 @@ angular.module('app')
 		$scope.camera = function(){
 			camera.take($scope.uploadFile);
 		}
- 
+
 		$scope.gallery = function(){
 			camera.gallery($scope.uploadFile)
 		}
@@ -283,5 +299,17 @@ angular.module('app')
 			$scope.post.file = file;
 			$scope.post.image = url;
 		}
+
+
+		
 	}
+
+
+	
+
+
+		
+
+
+	
 })
