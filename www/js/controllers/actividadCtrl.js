@@ -27,17 +27,17 @@ angular.module('app')
 	}
 
 	$scope.refresh = function(){
-		$timeout(function() {
-			$scope.loadContent('0');
+		/*$timeout(function() {
+			$scope.loadContent();
 		}, 1000);
-		$scope.$broadcast('scroll.refreshComplete');
+		$scope.$broadcast('scroll.refreshComplete');*/
 	}
 
 	$scope.scroll = function(){
-		$timeout(function() {
-			$scope.$broadcast('scroll.infiniteScrollComplete');
+		//$timeout(function() {
+			//$scope.$broadcast('scroll.infiniteScrollComplete');
 			$scope.loadContent();
-		}, 1000);
+		//}, 1000);
 	}
 
 	var objectFindByKey = function(array, key, value) {
@@ -53,7 +53,7 @@ angular.module('app')
 		if(requesting)return;
 		requesting = true;
 		ajax({
-			endpoint : '/content/all/' + localStorage.currentEvent || 0 + '/' + (p || page),
+			endpoint : '/content/all/' + localStorage.currentEvent + '/' + (p || page),
 			showError: true,
 			signHmac : true,
 			loading : page === 0,
@@ -109,6 +109,7 @@ angular.module('app')
 								}
 							}
 							$scope.$broadcast('scroll.refreshComplete');
+							page++;
 						}
 
 						requesting = false;
@@ -283,6 +284,17 @@ angular.module('app')
 				success : function(data){
 					$scope.loadContent('0');
 					$scope.postModal.hide();
+				},
+				error: function(data){				
+
+					if( data.data.errors == "The legend field is required."){
+						//console.log(data.data.errors);
+
+						$ionicPopup.alert({
+			                template: messages('invalid_post')
+			            });
+
+					}
 				}
 			})
 		}

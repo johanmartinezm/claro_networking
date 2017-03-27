@@ -4,7 +4,7 @@
 
 angular.module('app')
 
-.controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate, $state, ajax, $interval, messages, $ionicPopup, $ionicModal, cachedImage, PushNotificationDevice) {
+.controller('introCtrl', function($scope, $rootScope, $state, $ionicSlideBoxDelegate, $state, ajax, $interval, messages, $ionicPopup, $ionicModal, cachedImage, PushNotificationDevice) {
 	$scope.data = {};
 	/*$scope.data = {
 		username : 'tim.cook@apple.com',
@@ -40,10 +40,12 @@ angular.module('app')
 
 	$scope.login = function(){
 		var error = null;
+		//console.log($scope.data.username );
+
 		if(!$scope.info.conditions) error = 'login_terms';
 		if(!$scope.data.password) error = 'login_password_required';
 		if(isNaN($scope.data.password)) error = 'login_password_required';
-		if(!$scope.data.username) error = 'login_username_required';
+		if(!$scope.data.username || $scope.data.username === undefined ) error = 'login_username_required';
 		if(!regexEmail.test($scope.data.username)) error = 'auth_invalid_email';
 		if(error){
 			$ionicPopup.alert({
@@ -51,6 +53,9 @@ angular.module('app')
             });
             return false;
 		}
+
+
+
 		localStorage.identify = $scope.data.username;
 		localStorage.password = CryptoJS.SHA1($scope.data.password).toString()
 		ajax({
@@ -66,6 +71,7 @@ angular.module('app')
 				localStorage.identify = data.id;
 				localStorage.token = data.token;
 				PushNotificationDevice.sendServer();
+				
 				$state.go('event.list');
 				
 			}, 
@@ -80,6 +86,13 @@ angular.module('app')
 		});
 		return false;
 	}
+
+
+
+
+	//$interval.cancel($rootScope.interval);
+	delete $rootScope.notifications;
+	
 
 	
 

@@ -7,6 +7,9 @@ angular.module('app')
 
 	$scope.event_espera = true;
 
+
+
+
 	$scope.addToCalendar = function(event) {
 		$cordovaCalendar.createEvent({
 			title: event.name_event,
@@ -15,11 +18,13 @@ angular.module('app')
 			endDate: new Date(event.end_at)
 		}).then(function (result) {
 			$ionicPopup.alert({
-		        template: "Se ha agregado correctamente el evento a su calendario"
+		        //template: "Se ha agregado correctamente el evento a su calendario"
+		        template: messages('event_calendar_ok')
 		    });
 		}, function (err) {
 			$ionicPopup.alert({
-        		template: "Se ha presentado un problema al agregar el evento a su calendario"
+        		//template: "Se ha presentado un problema al agregar el evento a su calendario"
+        		template: messages('event_calendar_error')
       		});
 		});
 	}
@@ -42,8 +47,18 @@ angular.module('app')
 				localStorage.eventConfig = data.config;
 				localStorage.TermsAndServices = $config.terms_services;
 				localStorage.faq = JSON.stringify($config.faq);
-				$state.go('event.home');
+				$rootScope.notifications.page = 0;
+				$rootScope.notifications.read = 0;
+
+				$rootScope.getNotifications();
+
 				$rootScope.startListeningNotification();
+
+
+				$rootScope.inter_home = $interval($state.go('event.home'), 10000);
+
+				//$state.go('event.home');
+				
 
 			}
 		});
@@ -149,5 +164,76 @@ angular.module('app')
 			})
 		}
 	});
+
+
+	/****************************
+	Notificaiones por evento
+	****************************/
+
+	$rootScope.checkNotification = function(n){
+        for(var i = 0; i< $rootScope.notifications.length; i++){
+            if(n.id === $rootScope.notifications[i].id){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    $rootScope.getNotifications = function(){
+
+    	$rootScope.notifications = [];
+
+        var url = '/notification/all/' + localStorage.currentEvent + "/0";
+        ajax({
+            endpoint : url,
+            loading : false,
+            signHmac : true,
+            success : function(data){
+                if(data.length === 0){
+                    $rootScope.notifications.page = 0;
+                    return;
+                }
+                
+                $rootScope.notifications.read = 0;
+
+
+                data.forEach(function(n){
+                	if(n.is_read === 0){
+                		 $rootScope.notifications.read++;
+                	}
+                    if($rootScope.checkNotification(n)){
+                        $rootScope.notifications.splice(0, 0, n);
+                    }
+                });
+                
+                
+            },
+            error : function(){
+                $rootScope.notifications.page = 0;
+            }
+        })
+
+        
+    }
+
+    $rootScope.startListeningNotification = function() {
+
+    	
+        // activate listening notification
+        try{
+            var delay = JSON.parse(localStorage.config).ajax_notification_delay * 1000;
+            $rootScope.interval = $interval(function(){
+            	$rootScope.getNotifications();
+            }, delay);
+        }catch(e){
+            $rootScope.interval = $interval(function(){
+            	$rootScope.getNotifications();
+            }, 15000);
+        }
+    }
+
+    
+
+    $interval.cancel($rootScope.interval); 
 
 })

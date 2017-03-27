@@ -4,13 +4,14 @@
 
 angular.module('app')
 
-.controller('homeCtrl', function($scope, $state, $rootScope) {
+.controller('homeCtrl', function($scope, $state, $rootScope, $interval, ajax) {
+
 	$scope.notifications = $rootScope.notifications;
 
     $scope.event_info = $rootScope.event;
 
-
-	$scope.new_app = function(){
+   
+    $scope.new_app = function(){
 
 		if(device.platform === 'iOS') {
             scheme = 'clarora://';
@@ -46,4 +47,8 @@ angular.module('app')
         );      
 
 	}
+
+
+    $interval.cancel($rootScope.inter_home);
+    //console.log($rootScope.interval);    
 })

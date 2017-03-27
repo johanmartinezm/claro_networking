@@ -12,6 +12,7 @@ angular.module('app.routes', [])
 
   .state('event.home', {
     url: '/home',
+    cache: false,
     views: {
       'side-menu': {
         templateUrl: 'templates/home.html',
@@ -103,6 +104,9 @@ angular.module('app.routes', [])
 
   .state('event.casosdeexito', {
     url: '/casosdeexito',
+    params: {
+      'name_seccion': null
+    },
     views: {
       'side-menu': {
         templateUrl: 'templates/casosdeexito.html',

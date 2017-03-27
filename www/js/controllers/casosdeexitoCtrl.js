@@ -4,8 +4,12 @@
 
 angular.module('app')
 
-.controller('casosdeexitoCtrl', function($scope, $state, ajax, $ionicPopup, messages) {
+.controller('casosdeexitoCtrl', function($stateParams, $scope, $state, ajax, $ionicPopup, messages) {
 	$scope.questions = [];
+
+	console.log($state);
+
+	$scope.name_sec = $state.params.name_seccion;
 
 	ajax({
 		endpoint : '/leads/all',

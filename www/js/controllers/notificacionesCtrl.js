@@ -10,14 +10,19 @@ angular.module('app')
 	$scope.noNotifications = messages('no_notification')
 	var countIntervals = 0;
 
+	//console.log('data fin');
+	//console.log($scope.items);
+
+
 	var blink = function(){
+		
 		if(countIntervals !== 0)return;
 		var paint = function(color){
 			$scope.items.forEach(function(i){
 				if(i.is_read === 0){
 					i.color = color
 				}
-			})
+			})			
 		}
 
 		var interval = $interval(function(){
@@ -28,11 +33,16 @@ angular.module('app')
 				markRead();
 				countIntervals = 0;
 				return;
+
 			}
 			if(countIntervals % 2 === 1) paint('red');
 			else paint('gray');
 
+			
+
 		}, 500);
+
+		
 	}
 
 	var markRead = function(){
@@ -62,26 +72,37 @@ angular.module('app')
 	$timeout(blink, 1000);
 
 	var getNotifications = function(){
+
+		//console.log('getNotifications');
+
 		ajax({
-			endpoint : '/notification/all/'+ $rootScope.notifications.page,
+			endpoint : '/notification/all/'+ localStorage.currentEvent + '/' + $rootScope.notifications.page,
 			loading : false,
 			signHmac : true,
 			success : function(data){
+				console.log(data);
 				if(data.length === 0){
 					$scope.stop = true;
 					return;
 				}
-				data.forEach(function(n){
-					if($rootScope.checkNotification(n)){
-						$rootScope.notifications.push(n);
-					}
-				})
 				$rootScope.notifications.read = 0;
-				$rootScope.notifications.forEach(function(n){
-					if(n.is_read === 0){
-						$rootScope.notifications.read++;
-					}
-				})
+
+				data.forEach(function(n){
+                	if(n.is_read === 0){
+                		 $rootScope.notifications.read++;
+                	}
+                    if($rootScope.checkNotification(n)){
+                        $rootScope.notifications.splice(0, 0, n);
+                    }
+                })
+               
+                /*$rootScope.notifications.forEach(function(n){
+                    if(n.is_read === 0){
+                        $rootScope.notifications.read++;
+
+                    }
+                })*/
+
 				$rootScope.notifications.page++;
 				blink();
 			}
@@ -89,16 +110,16 @@ angular.module('app')
 	}
 
 	$scope.scroll = function(){
-		$timeout(function() {
+		//$timeout(function() {
 			$scope.$broadcast('scroll.infiniteScrollComplete');
 			getNotifications();
-		}, 1000);
+		//}, 1000);
 	}
 
 	$scope.refresh = function(){
-		$timeout(function() {
-			$rootScope.getNotifications();
-		}, 1000);
+		//$timeout(function() {
+			$scope.getNotifications();
+		//}, 1000);
 		$scope.$broadcast('scroll.refreshComplete');
 	}
 

@@ -130,59 +130,9 @@ angular.module('app')
 			});
 		}
 		else{
-			$state.go(item.sref);
+			$state.go(item.sref,{'name_seccion':item.text});
 		}
 	}
 
-	$rootScope.checkNotification = function(n){
-		for(var i = 0; i< $rootScope.notifications.length; i++){
-			if(n.id === $rootScope.notifications[i].id){
-				return false;
-			}
-		}
-		return true;
-	}
-
-	$rootScope.getNotifications = function(){
-		var url = '/notification/all/' + localStorage.currentEvent + "/1";
-		ajax({
-			endpoint : url,
-			loading : false,
-			signHmac : true,
-			success : function(data){
-				if(data.length === 0){
-					$rootScope.notifications.page = 0;
-					return;
-				}
-				data.forEach(function(n){
-					if($rootScope.checkNotification(n)){
-						$rootScope.notifications.splice(0, 0, n);
-					}
-				})
-				$rootScope.notifications.read = 0;
-				$rootScope.notifications.forEach(function(n){
-					if(n.is_read === 0){
-						$rootScope.notifications.read++;
-					}
-				})
-			},
-			error : function(){
-				$rootScope.notifications.page = 0;
-			}
-		})
-	}
-
-	$rootScope.startListeningNotification = function() {
-		// activate listening notification
-		try{
-			var delay = JSON.parse(localStorage.config).ajax_notification_delay * 1000;
-			$scope.interval = $interval($rootScope.getNotifications, delay);
-		}catch(e){
-			$scope.interval = $interval($rootScope.getNotifications, 15000);
-		}
-	}
-
-	$scope.$on('$destroy', function() {
-		$interval.cancel($scope.interval);
-	});
+	
 })
