@@ -1,0 +1,26 @@
+<ion-view id="strategy" view-title="Claro Tech Strategy Day" cache-view="false">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="strategyCtrl">
+    	<h3 class="font-red align-center font-title-light font_18">Resultados de participación</h3>
+
+    	<div class="cont_categorias">
+
+    		<ion-list  >    			
+	      		<div class="item_strategy" ng-repeat="item in items"  ng-click="responseCate(item)" >
+	    			<img src="img/strategy/{{item.image}}" width="100px" alt="">
+	    			<p>{{item.name}}</p>
+	    		</div>		    	
+		    </ion-list>   		
+    		
+    	</div>
+
+    	<div ng-if="num_res == 8" class="total_puntaje">
+    		<p class="promedio">{{total_porc}}%</p>
+    		<p>Oportunidad de mejora competitiva</p>
+    	</div>
+      
+    </div>
+  </ion-content>
+</ion-view>

@@ -7,6 +7,7 @@ angular.module('app')
 
 	$scope.event_espera = true;
 
+	$scope.text_sec = messages('text_list_event');
 
 
 
@@ -49,6 +50,8 @@ angular.module('app')
 				localStorage.faq = JSON.stringify($config.faq);
 				$rootScope.notifications.page = 0;
 				$rootScope.notifications.read = 0;
+				localStorage.stategy_code = JSON.stringify($config.stategy_code);
+				localStorage.max_cant_prod = $config.max_cantidad_products;
 
 				$rootScope.getNotifications();
 

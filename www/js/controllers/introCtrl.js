@@ -38,6 +38,13 @@ angular.module('app')
 		$ionicSlideBoxDelegate.next();
 	};
 
+
+	$scope.register = function(){
+
+		$state.go('event.list');	
+		console.log('registrar');
+	}
+
 	$scope.login = function(){
 		var error = null;
 		//console.log($scope.data.username );

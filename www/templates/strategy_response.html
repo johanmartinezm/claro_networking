@@ -1,0 +1,47 @@
+<ion-view id="strategy_response" view-title="Claro Tech Strategy Day" cache-view="false">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="strategyResponseCtrl" >
+    	<div class="header_category" >
+            <div class="titule">
+                <img src="img/strategy/{{category.image}}" width="100px" alt="">
+                <p>{{category.name}}</p>
+            </div>
+        </div> 
+
+        <div ng-hide="val_code" class="cont_code_category">
+            <p>{{text_code}}</p>
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="code_startegy">
+              </label>
+            <a  class="button_strategy" ng-click="validateCode()">enviar</a>
+        </div> 	
+        
+        <div ng-show="val_code" id="cont_{{$index}}" class="cont_response" ng-repeat="item in items" ng-init="parentIndex = $index" ng-class="!$last ? '' : 'cont_last'">
+          
+            <p class="pregunta">{{item.titule}}</p>
+            <div class="reponse_item" ng-repeat="respon in item.respon">
+                <label >
+                    <input type="radio" ng-model="item.response" value="{{respon.id_repuestas}}" name="response{{ parentIndex }}">
+                    
+                    {{respon.texto}}                    
+                </label>                
+            </div>       
+            
+
+            <a ng-show="$first" class="button_strategy" ng-click="openCont()">Siguiente</a>
+            <a ng-show="$last" class="button_strategy" ng-click="saveResponse()">Finalizar</a>
+        
+        </div>
+
+
+
+       
+    	
+    </div>
+
+    
+  </ion-content>
+</ion-view>
+

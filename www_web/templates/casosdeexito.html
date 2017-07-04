@@ -1,0 +1,29 @@
+<ion-view id="casosdeexito" view-title="{{name_sec}}">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+
+    <label class="item-input item-stacked-label" style="text-align:center;background-color:#f1f2f2; padding-top: 20px; padding-bottom: 10px;">
+      Las ideas compartidas en el app serán privadas y de uso confidencial.
+    </label>
+
+    <div ng-repeat="q in questions" style="margin:1em 1em;">
+      <div style="margin-bottom:1.5em;">
+        <strong>{{ ::q.title }}</strong>
+      </div>
+      <div style="margin-bottom:4em;">
+        <div ng-if="q.response == ''">
+          <textarea ng-model="q.info" style="width:100%;resize:none;padding:0.5em;"></textarea>
+        </div>
+        <ul ng-if="q.response != ''">
+          <li ng-repeat="p in q.response" style="margin:1em;">
+            <label><input ng-click="selectOption(q, p)" style="display:inline-block;vertical-align:middle;" name="{{ q.lead_id }}-option" type="radio" /> {{ p.message }}</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="padding">
+      <button class="button button-assertive button-block upper" ng-click="saveForm()">Enviar</button>
+    </div>
+
+  </ion-content>
+</ion-view>

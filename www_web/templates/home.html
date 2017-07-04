@@ -1,0 +1,54 @@
+<ion-view id="home" hide-back-button="true" cache-view="false" view-title="{{event_info.name_event}}">
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <div class="home-button" ui-sref="event.agenda">
+          <img style="display:block;" class="img-responsive" src="img/home/agenda.jpg">
+          <div class="bottom">
+            <strong class="text">Agenda</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="home-button" ui-sref="event.informacion">
+          <img style="display:block;" class="img-responsive" src="img/home/logistica-itinerarios.jpg">
+          <div class="bottom">
+            <strong class="text small">Información</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="home-button" ui-sref="event.cocreacion">
+          <img style="display:block;" class="img-responsive" src="img/home/cocreacion.jpg">
+          <div class="bottom">
+            <strong class="text small">CO - CREACIÓN</strong>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col">
+        <a ng-click="new_app()"><img style="display:inline-block;" class="img-responsive" src="http://www.eventosclaro.com.co/claro_eventos/storage/home/banner_RA.jpg"></a>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ui-sref="event.notificaciones">
+      <i data-icon="z" class="icon"></i>
+      <span class="badge" ng-if="notifications.read">{{notifications.read}}</span>
+      Notificaciones
+    </a>
+    <a class="tab-item" >
+      <i data-icon="K" class="icon"></i>
+      Actividad
+    </a>
+    <a class="tab-item" ui-sref="event.usuariostop">
+      <i data-icon="I" class="icon"></i>
+      Usuarios top
+    </a>
+  </div>
+</ion-view>

@@ -1,0 +1,163 @@
+<ion-view id="cocreacion" view-title="CO-CREACIÓN">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <tab-slide-box class="tabs-tabs">
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="none" class="tsb-hscroll">
+            <a href="javascript:;">Subir idea</a>
+            <a href="javascript:;">Ver ideas</a>
+            <a href="javascript:;">Top 10</a>
+          </ion-scroll>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+          <div class="box-padding">
+            <div class="list list-full list-no-border">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Título</span>
+                <input type="text" ng-model="post.name">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Descripción</span>
+                <textarea ng-model="post.description"></textarea>
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Solución tecnológica de Claro</span>
+                <textarea ng-model="post.solution"></textarea>
+              </label>
+              <button class="button button-block button-stable icon-right" ng-click="photo()">
+                Anexar foto (opcional)
+                <i data-icon="C" class="icon"></i>
+              </button>
+              <button class="button button-light" ng-if="filename">
+                <i class="ion-paperclip active" data-pack="default" data-tags="attach" style="font-size:1.3em"></i>
+                {{filename}}
+              </button>
+              <button class="button button-block button-assertive upper" ng-click="publish()">
+                Enviar idea
+              </button>
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="padding" ng-repeat="item in all" style="margin-bottom:1em;" ng-class="{'idea-dark':$index % 2 != 0}">
+            <ion-list class="list-transparent list-medium list-no-border">
+              <ion-item class="item-thumbnail-right">
+                <img class="thumb-border thumb-circle" ng-src="{{item.img}}">
+                <span style="font-size: 25px;font-weight: bold;color: #C73431;">{{ $index + 1 }}. </span>
+                <h3 style="font-size: 18px;font-weight: bold;display: inline-block;vertical-align: middle;color: #58595b;">{{ item.titulo | flupper }}</h3>
+                <h4 class="font-gray-medium">{{item.nombre}}</h4>
+              </ion-item>
+            </ion-list>
+            <div>
+              <strong>Descripción:</strong>  
+            </div>
+            <div class="row box-light">
+              <div class="col">
+                <p>{{item.descripcion}}</p>
+              </div>
+            </div>
+            <div style="padding-top:1em;">
+              <strong>Solución tecnológica de Claro:</strong>  
+            </div>
+            <div class="row box-light">
+              <div class="col">
+                <p>{{item.solucion}}</p>
+              </div>
+            </div>
+            <div class="margin-top" ng-if="item.image">
+              <i class="icon ion-images" style="font-size:1.2em;color: #C73431;"></i><a href="" style="margin-left: .5em;" ng-click="openDetail(1, item)">Ver foto</a>
+            </div>
+            <div class="row margin-top">
+              <div class="col align-right">
+                <rating ng-model="item.rating.rate" max="item.rating.max" readonly="item.readonly" ng-change="rating(item)"></rating>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide class="slide-ranking">
+          <ion-list class="list-transparent list-medium">
+              <ion-item ng-repeat="item in top" class="item-thumbnail-left item-avatar item-icon-right" ng-click="openDetail(2, item)">
+                <img class="thumb-border" ng-src="{{item.img}}">
+                <h3>{{ item.titulo | flupper }}</h3>
+                <h4 class="font-gray-medium">{{item.nombre}}</h4>
+                <i data-icon="F" class="icon font-red icon-small">{{item.puntaje}}</i>
+              </ion-item>
+          </ion-list>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+</ion-view>
+
+<script id="cocreacion-photo.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content">
+          <div class="row buttons-head">
+            <div class="col-80 comparte">{{ item.titulo | flupper }}</div>
+            <div class="col-20 align-right">
+              <i ng-click="closeDetail()" data-icon="h" class="icon font-gray-medium icon-small"></i>
+            </div>
+          </div>
+          <div style="text-align: center;">
+            <img ng-src="{{item.image}}" style="max-width: 100%;height: auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>
+
+<script id="cocreacion-detail.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content">
+          <div class="row buttons-head">
+            <div class="col-80 comparte">{{ item.titulo | flupper }}</div>
+            <div class="col-20 align-right">
+              <i ng-click="closeDetail()" data-icon="h" class="icon font-gray-medium icon-small"></i>
+            </div>
+          </div>
+          <div class="">
+            <div>
+              <strong>Descripción:</strong>
+            </div>
+            <div class="row box-light">
+              <div class="col">
+                <p>{{item.descripcion}}</p>
+              </div>
+            </div>
+            <div style="padding-top:1em;">
+              <strong>Solución tecnológica de Claro:</strong>  
+            </div>
+            <div class="row box-light">
+              <div class="col">
+                <p>{{item.solucion}}</p>
+              </div>
+            </div>
+            <div style="text-align: center;margin-top:1em;" ng-if="item.image">
+              <img ng-src="{{item.image}}" style="width: 30%;height: auto;margin:0 auto;">
+            </div>
+            <div class="row margin-top">
+              <div class="col align-right">
+                <rating ng-model="item.rating.rate" max="item.rating.max" readonly="item.readonly" ng-change="rating(item)"></rating>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>

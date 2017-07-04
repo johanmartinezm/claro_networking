@@ -26,19 +26,22 @@
             </div>
             <div class="col col-20">
               <!--<ion-toggle ng-change="clickConditions()" toggle-class="toggle-assertive" class="font-white">&nbsp;</ion-toggle>-->
-              <div class="font-white item item-toggle toggle-small" toggle-class="toggle-assertive">
+              <!--<div class="font-white item item-toggle toggle-small" toggle-class="toggle-assertive">
                 <label class="toggle toggle-assertive disable-user-behavior">
                   <input type="checkbox" ng-model="info.conditions">
                   <div class="track">
                     <div class="handle"></div>
                   </div>
                 </label>
-              </div>
+              </div>-->
+              <input type="checkbox" ng-model="info.conditions">
+
             </div>
           </div>
         </div>
 
         <button class="button button-block button-assertive upper">Ingresar</button>
+        <a class="button button-block button-assertive upper" ng-href="#/register">Registrar</a>
       </form>
     </ion-slide>
   </ion-slide-box>

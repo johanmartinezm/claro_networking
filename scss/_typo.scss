@@ -35,6 +35,10 @@
 .font-xl{
   font-size: 4em;
 }
+
+.font_18{
+  font-size: 18px;
+}
 body, p{
   @extend .font-gray;
 }

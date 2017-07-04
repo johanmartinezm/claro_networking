@@ -1,4 +1,4 @@
-angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 'tabSlideBox', 'ionic.rating', 'monospaced.qrcode','ngCordova'])
+angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 'tabSlideBox', 'ionic.rating', 'monospaced.qrcode','ngCordova','mp.autoFocus'])
 
 .run(function($ionicPlatform,$location, ajax, messages, $rootScope, $ionicPopup, PushNotificationDevice) {
     $ionicPlatform.ready(function() {
@@ -14,7 +14,7 @@ angular.module('app', ['ionic', 'app.routes', 'app.services', 'app.directives', 
         }
 
         // Google Analytics
-        if(window.analytics) analytics.startTrackerWithId('UA-79736514-1');
+        if(window.analytics) analytics.startTrackerWithId('UA-96323013-1');
 
         // PushNotification
         PushNotificationDevice.init();

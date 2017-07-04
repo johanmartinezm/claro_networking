@@ -1,6 +1,6 @@
 {
   "name": "Claro Networking",
-  "version": "1",
+  "version": "1.3.7",
   "description": "Claro Networking",
   "dependencies": {
     "gulp": "^3.5.6",

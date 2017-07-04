@@ -8,73 +8,73 @@
     },
     "installed_plugins": {
         "call-number": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "com.lampa.startapp": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-app-version": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-appavailability": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-calendar": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-crop": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-firebase": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-google-analytics": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         },
         "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "com.claro.claronetworking"
+            "PACKAGE_NAME": "com.clarogeometryc.claronetworking"
         }
     },
     "dependent_plugins": {}

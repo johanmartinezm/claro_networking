@@ -1,0 +1,55 @@
+
+
+<ion-view class="linear-gradient-gray-inverted" id="register" cache-view="false" view-title="REGISTRO">
+    <ion-side-menus enable-menu-with-back-views="false" cache-view="false">
+          <ion-side-menu-content>
+            <ion-nav-bar align-title="center" class="bar-assertive nav-bar-container" nav-bar-transition="android">
+              <ion-nav-back-button class=""></ion-nav-back-button>
+            </ion-nav-bar>
+
+            <ion-nav-view >  
+              <ion-content>                 
+              <form class="padding" ng-submit="save();" novalidate="">
+                <div class="list list-inset list-transparent">
+                  <label class="item item-input item-icon-right">
+                    <input id="name" type="text" ng-model="item.name" ng-focus="true" placeholder="Ingrese su nombre">
+                  </label>
+                  <label class="item item-input item-icon-right">
+                    <input id="lastname" type="text" ng-model="item.lastname" placeholder="Ingrese su apellido">             
+                  </label>                    
+                  <label class="item item-input item-icon-right">
+                    <input id="id_number" type="number" ng-model="item.id_number" placeholder="Ingrese su documento">
+                  </label>
+                  <label class="item item-input item-icon-right">
+                    <input id="email" type="email" ng-model="item.email" placeholder="Ingrese su e-mail">
+                  </label>
+                  <label class="item item-input item-icon-right">
+                    <input id="empresa" type="text" ng-model="item.empresa" placeholder="Ingrese su empresa">                 
+                  </label>
+                  <label class="item item-input item-icon-right">
+                    <input id="charge" type="text" ng-model="item.charge" placeholder="Ingrese su cargo">                     
+                  </label>
+                  <label class="item item-input item-icon-right">
+                    <input id="phone" type="number" ng-model="item.phone" placeholder="Ingrese su número de teléfono">      
+                  </label>
+                  <p>Selecciona un evento</p>
+                  <label class="item item-input item-icon-right">
+
+                    <select id="event" ng-model="item.event" required>
+                      <option ng-selected="$index == 0" ng-repeat="event in event_list  | filter:q as results" value="{{event.id}}">{{event.name_event}}</option>
+                    </select>    
+                  </label>
+                  <a class="button width_40 marginRight30 button-positive" ng-href="#/intro">Volver</a>
+                  <button class="button width_40 button-positive" >Guardar</button>
+                </div>
+                </form>
+
+              </ion-content>     
+
+            </ion-nav-view>
+          </ion-side-menu-content>
+
+    </ion-side-menus>  
+
+</ion-view>
+

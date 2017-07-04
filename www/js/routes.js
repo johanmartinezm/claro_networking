@@ -21,6 +21,16 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('register', {
+    
+    url: '/register',
+    cache: false,
+    templateUrl: 'templates/register.html',
+    controller: 'registerCtrl'
+
+   
+  })
+
   .state('event.agenda', {
     url: '/agenda',
     views: {
@@ -195,6 +205,60 @@ angular.module('app.routes', [])
       }
     }
     
+  })  
+
+
+  .state('event.strategy', {
+    url: '/strategy',
+    cache: false,
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/strategy.html',
+        controller: 'strategyCtrl'
+      }
+    }
+  })
+
+  .state('event.strategy_response', {
+    url: '/strategy_response',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/strategy_response.html',
+        controller: 'strategyResponseCtrl'
+      }
+    }
+  })
+
+
+  .state('event.listcategory', {
+    url: '/listcategory',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/listcategory.html',
+        controller: 'listCategoryCtrl'
+      }
+    }
+  })
+
+  .state('event.listproducts', {
+    url: '/listproducts/:id',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/listproducts.html',
+        controller: 'listProductsCtrl'
+      }
+    }
+  })
+
+
+  .state('event.listCart', {
+    url: '/listcart',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/listcart.html',
+        controller: 'listCartCtrl'
+      }
+    }
   })  
 
   .state('event', {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.clarogeometryc.claronetworking" version="1.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.clarogeometryc.claronetworking" version="1.3.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Claro Networking</name>
   <description>Claro Networking</description>
   <author email="geometry@geometry.com" href="http://geometry.com.co/">Geometry Global Colombia</author>

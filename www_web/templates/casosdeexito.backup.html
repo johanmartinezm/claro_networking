@@ -1,0 +1,72 @@
+<ion-view id="casosdeexito" view-title="CASOS DE ÉXITO">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+
+    <tab-slide-box class="tabs-tabs" ng-if="casosItems">
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a href="javascript:;" ng-repeat="item in casosItems">{{item.titulo}}</a>
+          </ion-scroll>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide ng-repeat="item in casosItems">
+          <div class="padding">
+            <h3 class="font-title-light font-red align-center">{{item.nombre}}</h3>
+            <p style="text-align:justify;">{{item.descripcion}}</p>
+
+            <div class="row margin-top-lg">
+              <div class="col-33"><h5 class="font-title-light">Calificación</h5></div>
+              <div class="col-75 align-center">
+                <rating ng-model="item.rating.rate" max="item.rating.max" readonly="item.readonly" ng-change="rating(item)"></rating>
+              </div>
+            </div>
+
+            <div class="row margin-top">
+              <div class="col">
+                <h4 class="font-title-light" style="text-align:center;">¿Está interesado en esta solución?</h4>
+              </div>
+            </div>
+
+            <button class="button button-block button-assertive upper" ng-click="request(item);">quiero más información</button>
+            <button class="button button-block button-assertive upper" ng-click="showForm(item);">tengo una idea de negocio</button>
+            <div ng-if="formVisible" style="margin-top:1em;">
+              <form>
+                <div>
+                  <strong>{{ ::q1 }}</strong>
+                  <textarea ng-model="form.description" style="width:100%;resize:none;margin-top:.5em;"></textarea>
+                </div>
+                <div style="margin-top:1em;">
+                  <strong>{{ ::q2 }}</strong>
+                  <div ng-repeat="m in rawForm.money_options" style="margin-bottom:.5em;margin-top:.5em;">
+                    <input ng-change="selectMoney(m)" id="m{{ ::m.value }}" type="radio" name="money" ng-value="m.value" ng-model="form.money" style="display:inline-block;vertical-align:middle;" />
+                    <label for="m{{ ::m.value }}">
+                      {{ ::m.label }}
+                    </label>
+                  </div>
+                  <div ng-if="!otherMoneyReadOnly">
+                    <input type="text" ng-model="form.otherMoney" style="width:100%;" maxlength="45" placeholder="Ej: 250000000" ng-readonly="otherMoneyReadOnly" />
+                  </div>
+                </div>
+                <div style="margin-top:1em;">
+                  <strong>{{ ::q3 }}</strong>
+                  <div ng-repeat="t in rawForm.time_options" style="margin-bottom:.5em;margin-top:.5em;">
+                    <input ng-change="selectTime(t)" id="t{{ ::t.value }}" type="radio" name="time" ng-value="t.value" ng-model="form.time" style="display:inline-block;vertical-align:middle;" />
+                    <label for="t{{ ::t.value }}">
+                      {{ ::t.label }}
+                    </label>
+                  </div>
+                  <div ng-if="!otherTimeReadOnly">
+                    <input type="text" ng-model="form.otherTime" style="width:100%;" maxlength="45" placeholder="Ej: 21/7/2020" ng-readonly="otherTimeReadOnly" />
+                  </div>
+                </div>
+                <button style="margin-top:2em;" class="button button-block button-assertive" ng-click="saveForm()">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+</ion-view>
