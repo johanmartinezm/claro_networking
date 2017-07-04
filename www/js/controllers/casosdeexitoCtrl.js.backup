@@ -1,0 +1,175 @@
+//  casosdeexitoCtrl.js 1.0.0
+//  Sergio Andrés Ñustes
+//  infinito84@gmail.com
+
+angular.module('app')
+
+.controller('casosdeexitoCtrl', function($scope, $state, ajax, $ionicPopup, messages) {
+
+	ajax({
+		endpoint : '/big-success/all',
+		showError: true,
+		signHmac : true,
+		loading: true,
+		success : function(data){
+			var count = 1;
+			$scope.casosItems = data.map(function(c){
+				return {
+					id : c.id,
+					titulo : 'Caso ' + (count++),
+					nombre : c.name,
+					descripcion : c.description,
+					rating : {rate : c.rated || 0, max : 5},
+					readonly : c.rated ? true : false
+				}
+			})
+		}
+	});
+
+	$scope.q1 = messages('big_success_q1');
+	$scope.q2 = messages('big_success_q2');
+	$scope.q3 = messages('big_success_q3');
+	$scope.otherMoneyReadOnly = true;
+	$scope.otherTimeReadOnly = true;
+
+	$scope.rating = function(item){
+		var copy = item.rating.rate;
+		item.rating.rate = 0;
+		$ionicPopup.confirm({
+			title: item.text,
+			template: messages('are_you_sure').replace('{$value}', copy),
+			buttons: [{
+				text: 'No',
+				type: 'button-default'
+				}, {
+				text: 'Sí',
+				type: 'button-positive',
+				onTap: function(e) {
+					item.rating.rate = copy;
+					item.readonly = true
+					ajax({
+						endpoint : '/big-success/rate/'+ item.id,
+						method : 'POST',
+						loading : false,
+						signHmac : true,
+						data : {
+							value : item.rating.rate
+						}
+					});
+				}
+			}]
+		});
+	}
+
+	$scope.request = function(item){
+		ajax({
+			endpoint : '/big-success/request/'+ item.id,
+			signHmac : true,
+			showSuccess : true
+		})
+	}
+
+	$scope.showForm = function(item){
+		$scope.formVisible = !$scope.formVisible;
+	}
+
+	$scope.saveForm = function(){
+		if(!$scope.form.description){
+			// falta la descripcion
+			$ionicPopup.alert({
+         template: messages('description_required')
+      });
+			return;
+		}
+
+		if(!$scope.form.money){
+			// falta el dinero
+			$ionicPopup.alert({
+         template: messages('money_required')
+      });
+			return;
+		}
+
+		if(!$scope.form.time){
+			// falta el tiempo
+			$ionicPopup.alert({
+         template: messages('time_required')
+      });
+			return;
+		}
+
+		if(!$scope.otherMoneyReadOnly){
+			// otro valor de dinero
+			if(isNaN($scope.form.otherMoney)){
+				$ionicPopup.alert({
+	         template: messages('other_money_required')
+	      });
+				return;
+			}
+		}
+
+		if(!$scope.otherTimeReadOnly){
+			// otro valor de tiempo
+			if(!$scope.form.otherTime){
+				$ionicPopup.alert({
+	         template: messages('other_time_required')
+	      });
+				return;
+			}
+		}
+
+		ajax({
+			endpoint : '/big-success/save-form',
+			signHmac : true,
+			showSuccess : false,
+			data: $scope.form,
+			method: 'post',
+			success: function(data){
+				if(data.status == 'ok'){
+					$ionicPopup.confirm({
+						template: messages(data.message),
+						buttons: [{
+							text: 'No',
+							type: 'button-default',
+							onTap: function(){
+								$scope.form = {};
+								$scope.formVisible = false;
+							}
+							}, {
+							text: 'Sí',
+							type: 'button-positive',
+							onTap: function(e) {
+								$scope.form = {};
+							}
+						}]
+					});
+				}
+			}
+		});
+	}
+
+	$scope.selectMoney = function(option){
+		if(!option.other){
+			$scope.form.otherMoney = "";
+			$scope.otherMoneyReadOnly = true;
+		}else{
+			$scope.otherMoneyReadOnly = false;
+		}
+	}
+
+	$scope.selectTime = function(option){
+		if(!option.other){
+			$scope.form.otherTime = "";
+			$scope.otherTimeReadOnly = true;
+		}else{
+			$scope.otherTimeReadOnly = false;
+		}
+	}
+
+	function renderBigSuccessForm(){
+		$scope.rawForm = JSON.parse(localStorage.bigSuccessForm);
+		$scope.form = {}
+	}
+
+	renderBigSuccessForm();
+})

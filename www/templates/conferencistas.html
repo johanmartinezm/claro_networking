@@ -1,0 +1,22 @@
+<ion-view id="conferencistas" view-title="CONFERENCISTAS">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+
+    <ion-list ng-controller="conferencistasCtrl" class="list-transparent list-medium">
+      <ion-item ng-repeat="item in speakers" class="center-vertical-item" ng-href="#/event/conferencista/{{item.id}}">
+        <div class="left">
+          <img class="thumb-border" ng-src="{{ ::item.image }}">
+        </div>
+        <div class="center">
+          <h2 style="font-family: 'dinboldalternate';font-size:17px;">{{ ::item.name }} {{ ::item.lastname }}</h2>
+          <h4 style="font-family: 'dinboldalternate';font-size:17px;" class="font-gray-medium">{{ ::item.charge }}</h4>
+          <p style="font-family: 'dinlightalternate';font-size:17px;">{{ ::item.resume }}</p>
+        </div>
+        <div class="right">
+          <i data-icon="G" class="icon font-gray-light icon-small"></i>
+        </div>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

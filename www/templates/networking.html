@@ -1,0 +1,73 @@
+<ion-view id="networking" view-title="NETWORKING">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding">
+      <p class="font-md padding">{{ ::networkingTitle }}</p>
+      <div class="row">
+        <div class="col-50 col-offset-25 align-center">
+          <div style="background: white; padding: 1.2em;display:inline-block">
+            <qrcode version="2" error-correction-level="H" size="110" data="{{code.qr}}"></qrcode>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-center">
+          <div class="padding code-container">
+            <h4 class="title-light">{{code.qr}}</h4>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="white">
+
+      <h4 class="margin-top font-title-light align-center font-red">Agregar un contacto</h4>
+
+      <div class="row margin-top">
+        <div class="col-33 align-center">
+          <i data-icon="f" class="icon icon-circle-lg" ng-click="scanQr()"></i>
+        </div>
+        <div class="col-67">
+          <div class="row">
+            <div class="col-75">
+              <label class="item item-input">
+                <input type="text" placeholder="" auto-focus ng-model="code.friend">
+              </label>
+            </div>
+            <div class="col-25">
+              <button class="button button-assertive" ng-click="addByCode()">
+                <i data-icon="m" class="icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-33">
+          <h5 class="font-red align-center font-title-light">Escanear</h5>
+        </div>
+        <div class="col-67">
+          <h5 class="font-red align-center font-title-light">Agregar código</h5>
+        </div>
+      </div>
+    </div>
+  
+    <div class="padding-h">
+      <hr class="white">
+    </div>
+
+    <h4 class="margin-top font-title-light align-center font-red">MIS CONTACTOS</h4>
+    <ion-list class="list-no-border list-transparent list-medium">
+        <ion-item class="item-thumbnail-left item-avatar item-icon-right" ng-repeat="item in networkingItems">
+          <img class="thumb-border" ng-src="{{item.image}}">
+          <h2>{{item.name}} {{item.lastname}}</h2>
+          <h4 class="font-title-light font-gray-medium">{{item.company}}</h4>
+          <i class="icon ion-edit font-gray-medium" style="height: 35%;top:15%;font-size:25px;" ng-click="editContact(item)"></i>
+          <i class="icon ion-archive font-gray-medium" style="height: 35%; top:auto;bottom:15%;font-size:25px;" ng-click="saveContact(item)"></i>
+          <p>{{item.email}}</p>
+          <p>{{item.phone}}</p>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

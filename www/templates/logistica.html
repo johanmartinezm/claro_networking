@@ -1,0 +1,18 @@
+<ion-view id="logistica" view-title="LOGÍSTICA">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="logisticaCtrl">
+      <h4 class="font-title-light" style="font-size:17px;"><i class="i icon-avion"></i> Información de sus vuelos</h4>
+      <p style="font-family:'dinlightalternate';font-size:17px;" ng-bind-html="flight" ng-bind-html="terms | unsafe"></p>
+      <hr class="white">
+
+      <h4 class="font-title-light" style="font-size:17px;"><i class="i icon-hotel"></i> Información de su hotel</h4>
+      <p style="font-family:'dinlightalternate';font-size:17px;" ng-bind-html="hotel" ng-bind-html="terms | unsafe"></p>
+      <hr class="white">
+
+      <h4 class="font-title-light" style="font-size:17px;">Mapa del evento</h4>
+      <img class="img-responsive" ng-src="{{smallImage}}" ng-click="openModal()">
+    </div>
+  </ion-content>
+</ion-view>

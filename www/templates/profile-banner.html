@@ -1,0 +1,10 @@
+<ion-list class="list-profile" ng-controller="profileBannerCtrl">
+    <ion-item class="item-thumbnail-left">
+      <span class="thumb-button">
+        <img ui-sref="event.perfil" class="thumb" ng-src="{{image}}">
+        <i ui-sref="event.perfil" data-icon="n" class="icon"></i>
+      </span>
+      <h2 class="font-title-light font-black">{{session.name}} {{session.lastname}}</h2>
+      <h3 class="font-title-light font-white">{{session.charge}}</h3>
+    </ion-item>
+</ion-list>

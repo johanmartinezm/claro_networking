@@ -1,0 +1,21 @@
+
+<ion-view id="listevent" cache-view="false" hide-back-button="true" view-title="CLARO NETWORKING">
+	<ion-content>
+		<p class="frase_list">{{text_sec}}</p>
+
+		<div ng-repeat="event in events">
+			<img style="display:block;" class="img-responsive" src="{{ ::event.image }}">
+			<div class="desc_event">
+				<h2>{{ ::event.name_event }}</h2>
+				<p>{{ ::event.descrip }}</p>
+				<div class="btns_list">
+					<a href="" ng-click="logInEvent(event)" ng-if="event.active == 1" class="btn_entrar">Entrar</a>
+					<a href="" ng-if="event.active == 0" class="btn_espera">En espera</a>
+					<a href="" ng-click="signInEvent(event)" ng-if="event.active == null" class="btn_registrar">Registrarme</a>
+					<a href="" ng-click="addToCalendar(event)" class="btn_calendario">Añadir al calendario</a>
+				</div>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

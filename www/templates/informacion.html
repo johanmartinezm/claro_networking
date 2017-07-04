@@ -1,0 +1,13 @@
+<ion-view id="logistica" view-title="Información">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="logisticaCtrl">
+      <h4 class="font-title-light" style="font-size:17px; float: left; width: 100%;">{{event.name_event}}</h4>
+      <p style="font-family:'dinlightalternate';font-size:17px; float: left; width: 100%;" >{{event.descrip}}</p>
+      
+      
+      <img class="img-responsive" ng-src="{{smallImage}}" ng-click="openModal()" >
+    </div>
+  </ion-content>
+</ion-view>

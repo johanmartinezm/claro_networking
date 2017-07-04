@@ -1,0 +1,51 @@
+<ion-view id="usuariostop" view-title="USUARIOS TOP">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+
+    <ion-list ng-controller="usuariostopCtrl" class="list-transparent list-medium">
+        <ion-item ng-repeat="item in items" class="item-thumbnail-left item-avatar">
+          <img class="thumb-border" ng-src="{{item.img}}">
+          <h2>{{item.nombre}}</h2>
+          <h4 class="font-gray">{{item.puntaje}}</h4>
+          <div class="bar-progress"><div class="progress" style="width: {{item.barra}}%;"></div></div>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <div class="row box-stable" ng-click="openModal()">
+    <div class="col">
+      <h4 class="font-red font-title-light">
+        ¿Cómo ganar puntos en Actividad?
+        <i data-pack="default" class="ion-plus-circled"></i>
+      </h4>
+    </div>
+  </div>
+</ion-view>
+
+<script id="rewards.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-content class="modal-container">
+    <div class="row height-full">
+      <div class="col col-center">
+        <div class="padding modal-content" style="position: relative;">
+          <div class="row buttons-head responsive-sm" style="position: absolute;right: 0;top: 0;">
+            <div class="col align-right">
+              <i ng-click="closeModal()" data-icon="h" class="icon font-gray-medium icon-small"></i>
+            </div>
+          </div>
+          <div class="row" style="padding-top: 2em;">
+            <div style="width:100%;padding:1em;">
+              <table>
+                <tr ng-repeat="i in scores">
+                  <td>{{i.message}}</td>
+                  <td class="red-color" style="width:70px;padding-left:.5em;">{{i.score}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>
+</script>

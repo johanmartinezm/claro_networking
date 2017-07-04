@@ -1,0 +1,32 @@
+<ion-view id="agenda" view-title="AGENDA">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+
+    <div class="row">
+      <div class="col">
+        <h2 class="title-light">Agenda general</h2>
+      </div>
+    </div>
+    
+    <tab-slide-box class="tabs-tabs" ng-if="agendaItems">
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a ng-repeat="item in agendaItems">{{item.titulo}}</a>
+          </ion-scroll>
+        </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide ng-repeat="item in agendaItems">
+          <ion-list class="list-transparent list-medium">
+              <ion-item ng-repeat="agenda in item.agenda">
+                <h3 style="font-family: 'dinlightalternate';">{{agenda.fecha}}</h3>
+                <h3 style="font-family: 'dinboldalternate';white-space:normal;" class="font-bold">{{agenda.titulo}}</h3>
+                <h3 style="font-family: 'dinlightalternate';white-space:normal;">{{agenda.lugar}}</h3>
+              </ion-item>
+          </ion-list>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+</ion-view>

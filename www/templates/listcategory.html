@@ -1,0 +1,25 @@
+<ion-view id="list_category" view-title="orden de pedido">
+  <ion-content>
+    <p class="text_category">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+   
+    <ion-list ng-controller="listCategoryCtrl" class="list-transparent list-medium">
+      
+      <ion-item ng-repeat="item in item" class="center-vertical-item" ng-href="#/event/listproducts/{{item.id}}">
+        <div class="center">
+          <img class="thumb-border" width="100" ng-src="{{ ::item.image }}">
+          <h2 >{{ ::item.name }} </h2>
+          
+        </div>
+      </ion-item>
+
+      
+    </ion-list>
+
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ng-click="ListCart()">
+      <i class="icon-ordenpedido"></i>
+    </a>
+  </div>
+</ion-view>

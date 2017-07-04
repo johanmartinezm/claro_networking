@@ -1,0 +1,48 @@
+<ion-view id="intro" hide-nav-bar="true">
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide class="slide-1" ng-click="next()" >
+      
+    </ion-slide>
+
+    
+
+    <ion-slide class="slide-2">
+      <img width="80%" class="margin-top " ng-src="img/logo.png">
+
+      <form class="padding" ng-submit="login();" novalidate="">
+        <div class="list list-inset">
+          <label class="item item-input">
+            <i data-icon="o" class="icon"></i>
+            <input type="email" placeholder="Ingrese su e-mail" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+            <i data-icon="i" class="icon"></i>
+            <input type="text" placeholder="Ingrese su C.C." ng-model="data.password">
+          </label>
+          <i data-icon="A" class="icon tooltip icon-help" position="left" title="{{ info.tooltip }}" animation="fade" ng-if="info.tooltip"></i>
+          <div class="row">
+            <div class="col col-67" ng-click="showTerms()">
+              <span style="font-size:.8em;text-decoration:underline;">Acepto términos y condiciones</span>
+            </div>
+            <div class="col col-20">
+              <!--<ion-toggle ng-change="clickConditions()" toggle-class="toggle-assertive" class="font-white">&nbsp;</ion-toggle>-->
+              <!--<div class="font-white item item-toggle toggle-small" toggle-class="toggle-assertive">
+                <label class="toggle toggle-assertive disable-user-behavior">
+                  <input type="checkbox" ng-model="info.conditions">
+                  <div class="track">
+                    <div class="handle"></div>
+                  </div>
+                </label>
+              </div>-->
+              <input type="checkbox" ng-model="info.conditions">
+
+            </div>
+          </div>
+        </div>
+
+        <button class="button button-block button-assertive upper">Ingresar</button>
+        <a class="button button-block button-assertive upper" ng-href="#/register">Registrar</a>
+      </form>
+    </ion-slide>
+  </ion-slide-box>
+</ion-view>

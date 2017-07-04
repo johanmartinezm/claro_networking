@@ -1,0 +1,41 @@
+<ion-view id="list_products" view-title="orden de pedido">
+  <ion-content>
+    <p class="category_name">{{category_info.name}}</p>
+    <ion-list ng-controller="listProductsCtrl" class="list-transparent list-medium">
+      
+      <ion-item ng-repeat="item in item" class="center-vertical-item" >
+        <div class="left">
+          <img class="thumb-border" ng-src="{{ ::item.image }}">
+        </div>
+        <div class="center">
+          <h2 >{{ ::item.name }} </h2>
+          <p>{{ ::item.text }} </p>
+          <p class="antes"><strong>Antes: <span>{{ ::item.valor_antes }}</span></strong> </p>
+          <p class="valor"><strong>Ahora: {{ ::item.valor }}</strong> </p>
+        </div>
+        <div class="agregar">
+          <div class="left">
+            <label>Cantidad</label>
+            <a ng-click="updateCant(item,'-')" class="updateCant" ng-class="{'desactivado' : item.cantidad == 1 }">-</a>
+            <input type="number" value="1" readonly ng-model="item.cantidad" name="cantidad">
+            <a ng-click="updateCant(item,'+')" class="updateCant" ng-class="{'desactivado' : item.cantidad == 10 }">+</a>
+          </div>
+          <div class="right">
+            <button class="button button-assertive button-block upper" ng-click="addCart(item)">Agregar</button>
+          </div>
+        </div>
+      </ion-item>
+
+      
+    </ion-list>
+
+    
+
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" ng-click="listCart()">
+      <i class="icon-ordenpedido"></i>
+    </a>
+  </div>
+</ion-view>

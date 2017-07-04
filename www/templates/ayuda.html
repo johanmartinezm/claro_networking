@@ -1,0 +1,35 @@
+<ion-view id="ayuda" view-title="AYUDA">
+  <ion-content>
+    <ng-include src="'templates/profile-banner.html'"></ng-include>
+    
+    <div class="padding" ng-controller="entradaCtrl">
+      <button class="button button-block button-assertive upper" ng-click="showTerms()">Ver términos y condiciones</button>
+
+      <h3 class="font-red align-center font-title-light">Acerca de</h3>
+      <div class="list list-full list-no-border">
+        <label class="item item-input item-stacked-label">
+          <textarea readonly style="text-align:center;background-color:#f1f2f2;">{{ ::helpText }}</textarea>
+        </label>
+      </div>
+      
+      <h3 class="font-red align-center font-title-light">Preguntas frecuentes</h3>
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{ ::group.title }}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" style="white-space: normal;">
+            <strong>{{ ::group.title }}</strong>
+            <p style="margin-top:.7em;white-space: normal;">R/ {{ ::group.answer }}</p>
+          </ion-item>
+        </div>
+      </ion-list>
+      <div style="margin-top:1em;" callnumber>
+        <p class="font-md" ng-bind-html="helpTitle | unsafe"></p>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>
