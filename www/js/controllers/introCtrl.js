@@ -12,7 +12,8 @@ angular.module('app')
 	};*/
 
 	$scope.info = {
-		conditions : false
+		conditions : false,
+		tooltip : messages('login_help_message')
 	};
 
 	$scope.changeConditions = function(){

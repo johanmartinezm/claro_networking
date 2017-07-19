@@ -4,33 +4,27 @@
 
 angular.module('app')
 
-.controller('interactuaCtrl', function($scope, $state, $ionicPopup, messages, ajax, cachedImage) {
-	$scope.interactTitle = messages('interact_title');
+.controller('retosCtrl', function($scope, $state, $ionicPopup, messages, ajax, cachedImage) {
+	$scope.interactTitle = messages('retos_empresariales_title');
 
-	var interact = JSON.parse(localStorage.interact || '[]');
+	var retos = JSON.parse(localStorage.retos || '[]');
 
 	$scope.ok_form = true;
 
 	ajax({
-		endpoint : '/speaker/questions/all/' + localStorage.currentEvent || 0,
+		endpoint : '/retos/questions/all/' + localStorage.currentEvent || 0,
 		signHmac : true,
 		showError : true,
 		success : function(data){
-			//console.log(data);
 			data.forEach(function(item){
 				item.class = 'button-default';
 				item.answer = false;
-				item.answered = interact.indexOf(item.id) !== -1;
+				item.answered = retos.indexOf(item.id) !== -1;
 			});
-			cachedImage({
-				data : data,
-				find : function(e){
-					return e.pic_path
-				},
-				complete : function(){
-					$scope.items = data;
-				}
-			})
+
+
+			$scope.items = data;
+			
 		}
 	})
 
@@ -68,7 +62,7 @@ angular.module('app')
 
 		if ($scope.ok_form === false) {
 			$ionicPopup.alert({
-		        template: messages('interactua_error_answer')
+		        template: messages('retos_error_answer')
 		    });
 		}else{
 			var json = JSON.stringify({
@@ -94,10 +88,8 @@ angular.module('app')
 				})
 			})
 
-			//console.log(json);
-
 			ajax({
-				endpoint : '/speaker/save-response',
+				endpoint : '/retos/save-response',
 				method : 'POST',
 				signHmac : true,
 				data : {
@@ -107,8 +99,8 @@ angular.module('app')
 				success : function(data){
 					console.log(data);
 					item.answered = true;
-					interact.push(item.id);
-					localStorage.interact = JSON.stringify(interact);
+					retos.push(item.id);
+					localStorage.retos = JSON.stringify(retos);
 				}
 			})
 		}

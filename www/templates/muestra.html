@@ -1,0 +1,35 @@
+<ion-view id="muestra" view-title="Muestra Comercial">
+  <ion-content>
+    
+    
+    <div class="padding" >
+      <p class="text_info">{{text}}</p>
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+            <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{ ::group.name }}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" style="white-space: normal;">
+            <img width="50" src="{{ ::group.imagen }}" class="img_patroc">
+            <p style="margin-top:.7em;white-space: normal; float: left;width: 64%;">{{ ::group.descripcion }}</p>
+            <a class="visited_no" ng-hide="group.codevalid">No visitado</a>
+            <a class="visited" ng-show="group.codevalid">Visitado</a>
+            <div class="code" ng-hide="group.codevalid">
+              <input type="number" ng-model="group.code_valid" placeholder="Ingresar código">
+              <button ng-click="valid(group)" class="button button-block button-assertive upper button_muestra">Enviar</button>
+            </div>
+            <div class="interes" ng-hide="group.interes">
+              <button ng-click="interesado(group)" class="button button-block button-assertive upper button_muestra">Estoy interesado</button>
+            </div>
+          </ion-item>
+        </div>
+      </ion-list>
+      <div style="margin-top:1em;" callnumber>
+        <p class="font-md" ng-bind-html="helpTitle | unsafe"></p>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

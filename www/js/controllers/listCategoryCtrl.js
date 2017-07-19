@@ -27,5 +27,10 @@ angular.module('app')
 			
 		}
 	})
+
+
+	$scope.listCart = function(){
+		$state.go('event.listCart')
+	}
 	
 })

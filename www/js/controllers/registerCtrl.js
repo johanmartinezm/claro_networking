@@ -18,6 +18,8 @@ angular.module('app')
 		event: '',
 		
 	};
+
+	$scope.frase_info = messages('login_help_message');
 	
 
 	$scope.backSec = function(){

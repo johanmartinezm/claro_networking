@@ -232,6 +232,7 @@ angular.module('app.routes', [])
 
   .state('event.listcategory', {
     url: '/listcategory',
+    cache: false,
     views: {
       'side-menu': {
         templateUrl: 'templates/listcategory.html',
@@ -242,6 +243,7 @@ angular.module('app.routes', [])
 
   .state('event.listproducts', {
     url: '/listproducts/:id',
+    cache: false,
     views: {
       'side-menu': {
         templateUrl: 'templates/listproducts.html',
@@ -253,10 +255,33 @@ angular.module('app.routes', [])
 
   .state('event.listCart', {
     url: '/listcart',
+    cache: false,
     views: {
       'side-menu': {
         templateUrl: 'templates/listcart.html',
         controller: 'listCartCtrl'
+      }
+    }
+  })  
+
+  .state('event.retos', {
+    url: '/retos',
+    cache: false,
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/retos.html',
+        controller: 'retosCtrl'
+      }
+    }
+  })  
+
+  .state('event.muestra', {
+    url: '/muestra',
+    cache: false,
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/muestra.html',
+        controller: 'muestraCtrl'
       }
     }
   })  

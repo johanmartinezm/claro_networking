@@ -1,19 +1,43 @@
-<ion-view id="list_cart" view-title="Lista de Deseos">
+<ion-view id="list_cart" view-title="E-commerce" cache-view="false"> 
+
   <ion-content>
-   
-    <ion-list ng-controller="listCartCtrl" class="list-transparent list-medium">
+    <div class="list_products_cart list-transparent list-medium">
+      <div ng-show="emptyCart">
+        <p class="text_empty align-center">Su carrito está vacío</p>
+      </div>
+
+      <div ng-hide="emptyCart" class="row header">
+        <div class="col">Marca</div>
+        <div class="col">Producto</div>
+        <div class="col">Cantidad</div>
+        <div class="col">precio</div>
+       
+      </div>
+      <div  ng-hide="emptyCart" class="row" ng-repeat="item in products">
+        <div class="col"><img src="{{item.category_img}}"></div>
+        <div class="col">{{item.name}}</div>
+        <div class="col"><span class="cantidad">{{item.cantidad}}</span></div>
+        <div class="col">
+          <span class="valor">${{item.valor}}</span>
+          <a href="javascript:void(0);" class="delete" ng-click="removeItem($index);" >Eliminar</a>
+        </div>
+      </div>
+      <div  ng-hide="emptyCart" class="row total">
+        <div class="col"></div>
+        <div class="col"><span class="total_title">Total</span></div>
+        <div class="col"><span class="total_cant">{{total_cant}}</span></div>
+        <div class="col"><span class="total_valor">${{total}}</span></div>
+      </div>
+
+      <div  ng-hide="emptyCart" class="btn_cart" >
+        <button class="button button-assertive button-block upper" ng-click="volver()">Volver</button>
+        <button class="button button-assertive button-block upper" ng-click="addOrder()">enviar</button>
+      </div>
+
       
-      <ion-item ng-repeat="item in products" class="center-vertical-item">
-        <div class="left">
-          <img class="thumb-border" ng-src="{{ ::item.image }}">
-        </div>
-        <div class="center">
-          <p>{{ ::item.name }} </p>
-          <a href="javascript:void(0);" ng-click="removeItem($index);" >Eliminar</a>
-        </div>
-      </ion-item>      
-    
-    </ion-list>
+
+    </div>
+  
 
   </ion-content>
 

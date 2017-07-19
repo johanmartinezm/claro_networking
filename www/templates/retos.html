@@ -1,4 +1,4 @@
-<ion-view id="interactua" view-title="INTERACTÚA"  cache-view="false">
+<ion-view id="interactua" view-title="Retos Empresariales"  cache-view="false">
   <ion-content>
     <ng-include src="'templates/profile-banner.html'"></ng-include>
     
@@ -9,10 +9,9 @@
     <div ng-repeat="item in items">
       <ion-list class="list-no-border list-transparent list-medium">
           <ion-item class="item-thumbnail-left item-avatar">
-            <img class="thumb-border" ng-src="{{item.image}}">
-            <h2>{{item.name}} {{item.lastname}}</h2>
-            <h4 class="font-title-light font-gray-medium">{{item.charge}}</h4>
-            <p>{{item.resume}}</p>
+            <img class="thumb-border" ng-src="{{item.pic}}">
+            <h2>{{item.name}}</h2>            
+            <p>{{item.description}}</p>
           </ion-item>
       </ion-list>
     

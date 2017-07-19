@@ -65,7 +65,7 @@ angular.module('app')
 
 		$scope.addok = false;
 
-		if( typeof localStorage.cart  != "undefined" ){
+		if( typeof localStorage.cart  != "undefined" && localStorage.cart != '' ){
 			cart = JSON.parse(localStorage.cart);
 		
 			angular.forEach(cart, function(value, key) {
@@ -82,6 +82,7 @@ angular.module('app')
 				cart.push({
 					"name" : item.name,
 					"category_name": $scope.category_info.name,
+					"category_img": $scope.category_info.image,
 					"category_id": id,
 					"id_product": item.id_product,
 					"cantidad" : item.cantidad,
@@ -98,6 +99,7 @@ angular.module('app')
 			cart.push({
 				"name" : item.name,
 				"category_name": $scope.category_info.name,
+				"category_img": $scope.category_info.image,
 				"category_id": id,
 				"id_product": item.id_product,
 				"cantidad" : item.cantidad,
