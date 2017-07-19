@@ -4,19 +4,29 @@
 
 angular.module('app')
 
+<<<<<<< HEAD
 .controller('interactuaCtrl', function($scope, $state, $ionicPopup, messages, ajax, cachedImage) {
+=======
+.controller('interactuaCtrl', function($scope, $state, messages, ajax, cachedImage) {
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	$scope.interactTitle = messages('interact_title');
 
 	var interact = JSON.parse(localStorage.interact || '[]');
 
+<<<<<<< HEAD
 	$scope.ok_form = true;
 
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	ajax({
 		endpoint : '/speaker/questions/all/' + localStorage.currentEvent || 0,
 		signHmac : true,
 		showError : true,
 		success : function(data){
+<<<<<<< HEAD
 			//console.log(data);
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 			data.forEach(function(item){
 				item.class = 'button-default';
 				item.answer = false;
@@ -35,6 +45,7 @@ angular.module('app')
 	})
 
 	$scope.select = function(item, optionSelected, question){
+<<<<<<< HEAD
 		//item.class = 'button-assertive';
 		//item.answer = true;
 
@@ -119,5 +130,38 @@ angular.module('app')
 		if(!item.answer) return;
 
 		*/
+=======
+		item.class = 'button-assertive';
+		item.answer = true;
+		question.answer = optionSelected.id;
+	}
+
+	$scope.rate = function(item){
+		if(!item.answer) return;
+
+		var json = JSON.stringify({
+			speaker : item.id,
+			answers : item.questions.map(function(q){
+				return {
+					id : q.id,
+					response : q.answer
+				}
+			})
+		})
+		ajax({
+			endpoint : '/speaker/save-response',
+			method : 'POST',
+			signHmac : true,
+			data : {
+				answers : json
+			},
+			showSuccess : true,
+			success : function(){
+				item.answered = true;
+				interact.push(item.id);
+				localStorage.interact = JSON.stringify(interact);
+			}
+		})
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	}
 })

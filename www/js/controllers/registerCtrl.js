@@ -18,8 +18,11 @@ angular.module('app')
 		event: '',
 		
 	};
+<<<<<<< HEAD
 
 	$scope.frase_info = messages('login_help_message');
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	
 
 	$scope.backSec = function(){

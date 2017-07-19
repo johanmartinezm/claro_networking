@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ion-view id="list_cart" view-title="E-commerce" cache-view="false"> 
 
   <ion-content>
@@ -38,6 +39,24 @@
 
     </div>
   
+=======
+<ion-view id="list_cart" view-title="Lista de Deseos">
+  <ion-content>
+   
+    <ion-list ng-controller="listCartCtrl" class="list-transparent list-medium">
+      
+      <ion-item ng-repeat="item in products" class="center-vertical-item">
+        <div class="left">
+          <img class="thumb-border" ng-src="{{ ::item.image }}">
+        </div>
+        <div class="center">
+          <p>{{ ::item.name }} </p>
+          <a href="javascript:void(0);" ng-click="removeItem($index);" >Eliminar</a>
+        </div>
+      </ion-item>      
+    
+    </ion-list>
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 
   </ion-content>
 

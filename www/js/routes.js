@@ -232,7 +232,10 @@ angular.module('app.routes', [])
 
   .state('event.listcategory', {
     url: '/listcategory',
+<<<<<<< HEAD
     cache: false,
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
     views: {
       'side-menu': {
         templateUrl: 'templates/listcategory.html',
@@ -243,7 +246,10 @@ angular.module('app.routes', [])
 
   .state('event.listproducts', {
     url: '/listproducts/:id',
+<<<<<<< HEAD
     cache: false,
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
     views: {
       'side-menu': {
         templateUrl: 'templates/listproducts.html',
@@ -255,7 +261,10 @@ angular.module('app.routes', [])
 
   .state('event.listCart', {
     url: '/listcart',
+<<<<<<< HEAD
     cache: false,
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
     views: {
       'side-menu': {
         templateUrl: 'templates/listcart.html',
@@ -264,6 +273,7 @@ angular.module('app.routes', [])
     }
   })  
 
+<<<<<<< HEAD
   .state('event.retos', {
     url: '/retos',
     cache: false,
@@ -286,6 +296,8 @@ angular.module('app.routes', [])
     }
   })  
 
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
   .state('event', {
     url: '/event',
     templateUrl: 'templates/side-menu.html',

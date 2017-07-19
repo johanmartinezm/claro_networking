@@ -12,8 +12,12 @@ angular.module('app')
 	};*/
 
 	$scope.info = {
+<<<<<<< HEAD
 		conditions : false,
 		tooltip : messages('login_help_message')
+=======
+		conditions : false
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	};
 
 	$scope.changeConditions = function(){

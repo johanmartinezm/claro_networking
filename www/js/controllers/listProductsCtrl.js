@@ -65,7 +65,11 @@ angular.module('app')
 
 		$scope.addok = false;
 
+<<<<<<< HEAD
 		if( typeof localStorage.cart  != "undefined" && localStorage.cart != '' ){
+=======
+		if( typeof localStorage.cart  != "undefined" ){
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 			cart = JSON.parse(localStorage.cart);
 		
 			angular.forEach(cart, function(value, key) {
@@ -82,7 +86,10 @@ angular.module('app')
 				cart.push({
 					"name" : item.name,
 					"category_name": $scope.category_info.name,
+<<<<<<< HEAD
 					"category_img": $scope.category_info.image,
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 					"category_id": id,
 					"id_product": item.id_product,
 					"cantidad" : item.cantidad,
@@ -99,7 +106,10 @@ angular.module('app')
 			cart.push({
 				"name" : item.name,
 				"category_name": $scope.category_info.name,
+<<<<<<< HEAD
 				"category_img": $scope.category_info.image,
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 				"category_id": id,
 				"id_product": item.id_product,
 				"cantidad" : item.cantidad,

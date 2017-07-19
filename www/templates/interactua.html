@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <ion-view id="interactua" view-title="INTERACTÚA"  cache-view="false">
+=======
+<ion-view id="interactua" view-title="INTERACTÚA">
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
   <ion-content>
     <ng-include src="'templates/profile-banner.html'"></ng-include>
     
@@ -32,14 +36,18 @@
           <p style="text-align:center;"><strong>No hay preguntas disponibles</strong></p>
         </div>
 
+<<<<<<< HEAD
 
        
 
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
         <div ng-repeat="q in item.questions" ng-if="item.questions.length > 0">
           <div class="margin-top">
             <strong>{{ $index + 1}}. {{q.question}}</strong>
           </div>
           <div class="row" style="margin-bottom:1em;">
+<<<<<<< HEAD
             <form style="width: 100%">
              
               <div ng-if="q.type == 1" ng-repeat="option in q.options" style="margin-bottom:.5em;">
@@ -51,12 +59,23 @@
                 <textarea ng-model="q.answer_text" style="width: 100%;" maxlength="150"></textarea >
               </div> 
 
+=======
+            <form>
+              <div ng-repeat="option in q.options" style="margin-bottom:.5em;">
+                <input ng-click="select(item, option, q)" value="{{ ::option.id }}" style="display:inline-block;vertical-align:middle;" id="group-{{ ::item.id }}-{{ $index }}" name="group-{{ ::item.id }}" type="radio" ng-disabled="item.answered">
+                <label ng-click="select(item, option, q)" style="display:inline-block;vertical-align:middle;" for="group-{{ ::item.id }}-{{ $index }}">{{ ::option.name }}</label>
+              </div>  
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
             </form>
           </div>
         </div>
 
         <div class="row" ng-if="item.questions.length > 0">
+<<<<<<< HEAD
           <button  ng-if="!item.answered" class="button button-block {{ item.class }} button-assertive upper" ng-click="rate(item)">Enviar respuesta</button>
+=======
+          <button  ng-if="!item.answered" class="button button-block {{ item.class }} upper" ng-click="rate(item)">Enviar respuesta</button>
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
         </div>
       </div>
     </div>

@@ -27,10 +27,13 @@ angular.module('app')
 			
 		}
 	})
+<<<<<<< HEAD
 
 
 	$scope.listCart = function(){
 		$state.go('event.listCart')
 	}
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	
 })

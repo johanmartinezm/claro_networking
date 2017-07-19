@@ -3,6 +3,7 @@ angular.module('app')
 
 .controller('listCartCtrl', function($scope, $state, $stateParams, messages, ajax, $ionicPopup) {
 
+<<<<<<< HEAD
 	$scope.total = 0;
 	$scope.total_cant = 0;
 	$scope.emptyCart = true;	
@@ -31,6 +32,22 @@ angular.module('app')
 	}
 
 	
+=======
+	$scope.products = JSON.parse(localStorage.cart);
+
+	console.log($scope.products);
+
+	$scope.total = 0;
+
+
+	angular.forEach($scope.products, function(value, key) {
+
+		$subtotal = value.value * value.cantidad;
+
+	  	$scope.total = $scope.total + $subtotal;
+	});
+
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 
 	$scope.removeItem = function ($index){
 
@@ -40,6 +57,7 @@ angular.module('app')
 	        template: messages('list_product_remove')
 	    });
 
+<<<<<<< HEAD
 	    localStorage.cart = JSON.stringify($scope.products);
 
 	    if($scope.products.length == 0){
@@ -67,11 +85,16 @@ angular.module('app')
 
 	$scope.volver = function(){
 		$state.go('event.listcategory')
+=======
+		console.log($scope.products); 
+
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 	}
 
 
 	$scope.addOrder = function (){
 
+<<<<<<< HEAD
 		var data_ = [];
 
 		data_.push({
@@ -124,6 +147,8 @@ angular.module('app')
 			
 			
 
+=======
+>>>>>>> 7dea7a2967806a31658da27cb5608634b685926f
 
 		
 	} 
